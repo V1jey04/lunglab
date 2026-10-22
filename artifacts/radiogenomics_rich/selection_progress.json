@@ -1,0 +1,217 @@
+{
+  "dataset_sha256": "52f3a497836c5d02d348dbc561ede8e6bd9714411fc856b765d17be631221987",
+  "split_sha256": "78a214c74dc09fc74fd9fb4fb93ea73931d5211b379fb1eb4cfbd1b8630c535d",
+  "development_patients": 104,
+  "test_patients": 35,
+  "target_accuracy": 0.83,
+  "models": {
+    "paper_mlp": {
+      "nested_cv_accuracy": 0.6442307692307693,
+      "nested_cv_balanced_accuracy": 0.4925415949512335,
+      "nested_cv_auc": 0.6282271944922547,
+      "confusion_matrix": [
+        [
+          62,
+          21
+        ],
+        [
+          16,
+          5
+        ]
+      ],
+      "fold_parameters": [
+        {
+          "select__alpha": 0.01
+        },
+        {
+          "select__alpha": 0.001
+        },
+        {
+          "select__alpha": 0.001
+        },
+        {
+          "select__alpha": 0.001
+        },
+        {
+          "select__alpha": 0.001
+        }
+      ],
+      "frozen_parameters": {
+        "select__alpha": 0.01
+      }
+    },
+    "quantile_svm": {
+      "nested_cv_accuracy": 0.6057692307692307,
+      "nested_cv_balanced_accuracy": 0.5218014916810098,
+      "nested_cv_auc": 0.48881239242685026,
+      "confusion_matrix": [
+        [
+          55,
+          28
+        ],
+        [
+          13,
+          8
+        ]
+      ],
+      "fold_parameters": [
+        {
+          "model__C": 10,
+          "model__gamma": "scale",
+          "select__k": "all"
+        },
+        {
+          "model__C": 1,
+          "model__gamma": "scale",
+          "select__k": 10
+        },
+        {
+          "model__C": 0.1,
+          "model__gamma": "scale",
+          "select__k": "all"
+        },
+        {
+          "model__C": 1,
+          "model__gamma": "scale",
+          "select__k": 10
+        },
+        {
+          "model__C": 1,
+          "model__gamma": "scale",
+          "select__k": 10
+        }
+      ],
+      "frozen_parameters": {
+        "model__C": 1,
+        "model__gamma": 0.01,
+        "select__k": 10
+      }
+    },
+    "shrinkage_lda": {
+      "nested_cv_accuracy": 0.625,
+      "nested_cv_balanced_accuracy": 0.587205966724039,
+      "nested_cv_auc": 0.5714285714285714,
+      "confusion_matrix": [
+        [
+          54,
+          29
+        ],
+        [
+          10,
+          11
+        ]
+      ],
+      "fold_parameters": [
+        {
+          "select__k": "all"
+        },
+        {
+          "select__k": 10
+        },
+        {
+          "select__k": 10
+        },
+        {
+          "select__k": 10
+        },
+        {
+          "select__k": 10
+        }
+      ],
+      "frozen_parameters": {
+        "select__k": 10
+      }
+    },
+    "robust_logistic": {
+      "nested_cv_accuracy": 0.6730769230769231,
+      "nested_cv_balanced_accuracy": 0.7062535857716581,
+      "nested_cv_auc": 0.6781411359724612,
+      "confusion_matrix": [
+        [
+          54,
+          29
+        ],
+        [
+          5,
+          16
+        ]
+      ],
+      "fold_parameters": [
+        {
+          "model__C": 10,
+          "select__k": 10
+        },
+        {
+          "model__C": 1,
+          "select__k": 10
+        },
+        {
+          "model__C": 0.01,
+          "select__k": 10
+        },
+        {
+          "model__C": 10,
+          "select__k": 10
+        },
+        {
+          "model__C": 0.1,
+          "select__k": 10
+        }
+      ],
+      "frozen_parameters": {
+        "model__C": 0.1,
+        "select__k": 10
+      }
+    },
+    "multiview_ensemble": {
+      "nested_cv_accuracy": 0.7019230769230769,
+      "nested_cv_balanced_accuracy": 0.653184165232358,
+      "nested_cv_auc": 0.6890418818129661,
+      "confusion_matrix": [
+        [
+          61,
+          22
+        ],
+        [
+          9,
+          12
+        ]
+      ],
+      "fold_parameters": [
+        {
+          "C": 1,
+          "k": 20,
+          "original_weight": 1.0
+        },
+        {
+          "C": 1,
+          "k": 10,
+          "original_weight": 2.0
+        },
+        {
+          "C": 1,
+          "k": 10,
+          "original_weight": 2.0
+        },
+        {
+          "C": 0.01,
+          "k": 20,
+          "original_weight": 2.0
+        },
+        {
+          "C": 0.01,
+          "k": 10,
+          "original_weight": 2.0
+        }
+      ],
+      "frozen_parameters": {
+        "C": 0.01,
+        "k": 10,
+        "original_weight": 2.0
+      }
+    }
+  },
+  "seed": 42,
+  "selection_metric": "nested CV balanced accuracy; AUC breaks ties",
+  "test_evaluated": false
+}

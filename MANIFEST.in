@@ -1,0 +1,7 @@
+include app.py requirements.lock.txt
+recursive-include configs *.yaml
+recursive-include docs *.md *.html
+prune tmp
+prune data
+prune artifacts
+prune .venv

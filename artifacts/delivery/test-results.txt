@@ -1,0 +1,18 @@
+........................................................................ [ 69%]
+...............................                                          [100%]
+=============================== warnings summary ===============================
+tests/test_ct_workspace.py::test_stability_exports_all_actual_feature_measurements
+tests/test_ct_workspace.py::test_stability_exports_all_actual_feature_measurements
+tests/test_ct_workspace.py::test_stability_exports_all_actual_feature_measurements
+tests/test_imaging.py::test_extracts_real_3d_feature_families
+tests/test_imaging.py::test_rich_extraction_preserves_wavelet_and_log_features
+  <frozen importlib._bootstrap>:283: DeprecationWarning: the load_module() method is deprecated and slated for removal in Python 3.12; use exec_module() instead
+
+tests/test_pipeline.py::test_smote_handles_small_minority_without_touching_input
+  /Users/vijey/Documents/ml_project_new/.venv/lib/python3.11/site-packages/joblib/externals/loky/backend/context.py:134: UserWarning: Could not find the number of physical cores for the following reason:
+  invalid literal for int() with base 10: ''
+  Returning the number of logical cores instead. You can silence this warning by setting LOKY_MAX_CPU_COUNT to the number of cores you want to use.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+103 passed, 6 warnings in 24.06s

@@ -1,0 +1,22 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+tmp/
+data/raw/
+artifacts/**/training_cache/
+**/.matplotlib/
+.DS_Store
+build/
+dist/
+*.egg-info/
+
+# Local credentials, environment files, and editor settings.
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+*.pem
+*.key
+.idea/
+.vscode/

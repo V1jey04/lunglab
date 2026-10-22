@@ -1,0 +1,22 @@
+[
+  {
+    "parameters":{
+      "select__alpha":0.001
+    },
+    "threshold":0.5,
+    "prediction_rule":"native_predict",
+    "inner_accuracy":0.6987951807,
+    "inner_balanced_accuracy":0.6231343284,
+    "inner_auc":0.5541044776
+  },
+  {
+    "parameters":{
+      "select__alpha":0.01
+    },
+    "threshold":0.5,
+    "prediction_rule":"native_predict",
+    "inner_accuracy":0.7108433735,
+    "inner_balanced_accuracy":0.5830223881,
+    "inner_auc":0.5671641791
+  }
+]

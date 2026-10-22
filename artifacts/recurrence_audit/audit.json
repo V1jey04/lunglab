@@ -1,0 +1,79 @@
+{
+  "created_at_utc": "2026-10-10T06:42:23.707202+00:00",
+  "status": "blocked_pending_outcome_and_index_date_semantics",
+  "training_allowed": false,
+  "blocking_reason": {
+    "surgery_date": "The positive CT-to-surgery interval and matching radiomic CT are not independently verified.",
+    "recurrence_free_followup": "The source has a binary recurrence field and a last-known-alive date, but does not establish that recurrence was assessed through that date."
+  },
+  "surgery_date_interpretation": "CT Date plus positive Days between CT and surgery; requires source sign interpretation",
+  "date_semantics_verified": false,
+  "semantic_evidence": {
+    "surgery_date": null,
+    "recurrence_free_followup": null
+  },
+  "counts": {
+    "source_patients": 139,
+    "source_recurrence_yes": 37,
+    "source_recurrence_no": 102,
+    "eligible_by_dates_and_clinical_rules": 115,
+    "eligible_development_patients": 84,
+    "eligible_test_patients": 31,
+    "eligible_recurrence_events": 26,
+    "eligible_competing_deaths": 24,
+    "eligible_right_censored": 65,
+    "sensitivity_180_day": {
+      "eligible_patients": 120,
+      "recurrence_events": 31,
+      "competing_deaths": 24,
+      "right_censored": 65
+    },
+    "excluded_patients": 24,
+    "followup_semantics_verified": false,
+    "surgery_date_semantics_verified": false,
+    "training_allowed": false,
+    "exclusions_by_reason": {
+      "ct_outside_primary_90_day_window": 19,
+      "death_before_index": 1,
+      "death_before_provisional_surgery": 1,
+      "last_known_alive_before_provisional_surgery": 1,
+      "metastatic_at_baseline": 4,
+      "no_positive_followup_after_index": 1,
+      "recurrence_after_last_known_alive": 1
+    },
+    "event_counts_by_split": {
+      "development": {
+        "recurrence": 18,
+        "competing_death": 17,
+        "censored": 49
+      },
+      "test": {
+        "recurrence": 8,
+        "competing_death": 7,
+        "censored": 16
+      }
+    },
+    "days_followed_at_horizon_by_split": {
+      "development": {
+        "365": 66,
+        "730": 55
+      },
+      "test": {
+        "365": 23,
+        "730": 18
+      }
+    }
+  },
+  "source_hashes": {
+    "features": "52f3a497836c5d02d348dbc561ede8e6bd9714411fc856b765d17be631221987",
+    "clinical": "0a1f7cdf02cef58450db17f116a3fb0ecfd4d737ca6843bb1939dbe421071476",
+    "split": "78a214c74dc09fc74fd9fb4fb93ea73931d5211b379fb1eb4cfbd1b8630c535d"
+  },
+  "outputs": {
+    "cohort": "data/recurrence_cohort.csv",
+    "outcomes": "data/recurrence_outcomes.csv",
+    "features": "data/recurrence_features.csv",
+    "splits": "data/recurrence_cohort.splits.csv",
+    "case_audit": "artifacts/recurrence_audit/case_audit.csv"
+  }
+}

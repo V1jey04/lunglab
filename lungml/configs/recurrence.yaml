@@ -1,0 +1,19 @@
+schema_version: 1
+task: first recurrence before death after initial surgery
+endpoint: recurrence cumulative incidence; death before recurrence is a competing event
+prediction_origin: initial surgery date
+ct_surgery_window_days: [1, 90]
+horizons_days: [365, 730]
+primary_horizon_days: 730
+secondary_horizon_days: 365
+seed: 42
+outer_folds: 3
+inner_folds: 3
+minimum_events_per_cause_in_training_fold: 5
+minimum_censoring_survival: 0.10
+minimum_patients_at_risk: 10
+alpha_grid: [0.1, 1.0, 10.0]
+pca_component_grid: [1, 2]
+selection_metric: inner-CV IPCW recurrence Brier score at 730 days
+tie_breaking: fewer PCA components, then stronger ridge regularization
+test_evaluation: once after selection is frozen; exploratory because patients were previously inspected

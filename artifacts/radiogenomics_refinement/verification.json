@@ -1,0 +1,24 @@
+{
+  "saved_models_checked": [
+    "baseline_rich_logistic",
+    "sigmoid_rich_logistic",
+    "bagged_rich_logistic",
+    "elastic_net_radiomics",
+    "pca_radiomics_logistic",
+    "pca_radiomics_svm",
+    "stacked_radiomics"
+  ],
+  "primary_model_unchanged": true,
+  "dataset_and_split_unchanged": true,
+  "development_selection_retained": true,
+  "all_saved_predictions_and_metrics_match": true,
+  "all_documentation_rows_match": true,
+  "paired_prediction_changes": [
+    {
+      "patient_id": "R01-028",
+      "y_true": 0,
+      "predicted_baseline": 1,
+      "predicted_bagged": 0
+    }
+  ]
+}

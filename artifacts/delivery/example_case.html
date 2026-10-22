@@ -1,0 +1,176 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LungLab case · R01-002</title><style>
+body{font:15px/1.6 system-ui,sans-serif;color:#203950;background:#f2f6fa;margin:0;padding:32px}
+main{max-width:940px;margin:auto;background:white;padding:36px;border-radius:20px;border-top:6px solid #0b9488}
+h1{font-size:34px;margin:6px 0}h2{font-size:20px;margin-top:30px}small{color:#62778b}table{border-collapse:collapse;width:100%}
+td,th{text-align:left;padding:10px;border-bottom:1px solid #e4edf1;overflow-wrap:anywhere}th{width:40%}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f5f8fb;padding:20px;font-size:12px}img{max-width:100%}
+.context{background:#eaf7f3;padding:16px;border-radius:10px}button{background:#0b9488;color:white;padding:10px 20px;border:0;border-radius:8px;cursor:pointer}
+@media print{body{padding:0;background:white}main{padding:10px}button{display:none}pre{font-size:10px}}
+</style><main><small>LUNGLAB / RESEARCH CASE REPORT</small><h1>R01-002</h1>
+<p class="context">Research use only. Exploratory public-cohort evidence. No treatment recommendation or clinical validation.</p><button onclick="window.print()">Print / save as PDF</button>
+<h2>Model output</h2><table><tr><th>sample_id</th><td>R01-002-tumour</td></tr><tr><th>patient_id</th><td>R01-002</td></tr><tr><th>prediction</th><td>adenocarcinoma</td></tr><tr><th>p_adenocarcinoma</th><td>0.878559</td></tr><tr><th>p_squamous_cell_carcinoma</th><td>0.121441</td></tr><tr><th>review_suggested</th><td>False</td></tr><tr><th>data_provenance</th><td>real</td></tr></table><h2>Input quality</h2><pre>[
+  {
+    &quot;patient_id&quot;: &quot;R01-002&quot;,
+    &quot;missing_feature_count&quot;: 0,
+    &quot;missing_features&quot;: [],
+    &quot;reference_available&quot;: true,
+    &quot;outside_reference_count&quot;: 49,
+    &quot;outside_reference_fraction&quot;: 0.029131985731272295,
+    &quot;outside_reference_features&quot;: [
+      &quot;original_glszm_ZoneEntropy&quot;,
+      &quot;gradient_glszm_SmallAreaLowGrayLevelEmphasis&quot;,
+      &quot;gradient_glszm_ZoneEntropy&quot;,
+      &quot;lbp-3D-k_firstorder_90Percentile&quot;,
+      &quot;lbp-3D-k_firstorder_InterquartileRange&quot;,
+      &quot;lbp-3D-k_firstorder_MeanAbsoluteDeviation&quot;,
+      &quot;lbp-3D-k_firstorder_RobustMeanAbsoluteDeviation&quot;,
+      &quot;lbp-3D-k_firstorder_Variance&quot;,
+      &quot;lbp-3D-k_glcm_Autocorrelation&quot;,
+      &quot;lbp-3D-k_glcm_Contrast&quot;,
+      &quot;lbp-3D-k_glcm_DifferenceAverage&quot;,
+      &quot;lbp-3D-k_glcm_DifferenceEntropy&quot;,
+      &quot;lbp-3D-k_glcm_DifferenceVariance&quot;,
+      &quot;lbp-3D-k_glcm_Id&quot;,
+      &quot;lbp-3D-k_glcm_Idm&quot;,
+      &quot;lbp-3D-k_glcm_Idmn&quot;,
+      &quot;lbp-3D-k_glcm_Idn&quot;,
+      &quot;lbp-3D-k_glcm_InverseVariance&quot;,
+      &quot;lbp-3D-k_glcm_JointAverage&quot;,
+      &quot;lbp-3D-k_glcm_JointEnergy&quot;,
+      &quot;lbp-3D-k_glcm_JointEntropy&quot;,
+      &quot;lbp-3D-k_glcm_MaximumProbability&quot;,
+      &quot;lbp-3D-k_glcm_SumAverage&quot;,
+      &quot;lbp-3D-k_glcm_SumEntropy&quot;,
+      &quot;lbp-3D-k_glcm_SumSquares&quot;,
+      &quot;lbp-3D-k_gldm_DependenceVariance&quot;,
+      &quot;lbp-3D-k_gldm_SmallDependenceHighGrayLevelEmphasis&quot;,
+      &quot;lbp-3D-k_glszm_GrayLevelNonUniformity&quot;,
+      &quot;lbp-3D-k_glszm_SizeZoneNonUniformity&quot;,
+      &quot;lbp-3D-k_glszm_ZonePercentage&quot;,
+      &quot;lbp-3D-k_ngtdm_Complexity&quot;,
+      &quot;logarithm_glcm_Idm&quot;,
+      &quot;logarithm_glcm_InverseVariance&quot;,
+      &quot;logarithm_gldm_DependenceVariance&quot;,
+      &quot;logarithm_gldm_LargeDependenceEmphasis&quot;,
+      &quot;logarithm_glrlm_LongRunEmphasis&quot;,
+      &quot;logarithm_glrlm_RunLengthNonUniformityNormalized&quot;,
+      &quot;logarithm_glrlm_RunPercentage&quot;,
+      &quot;logarithm_glrlm_RunVariance&quot;,
+      &quot;logarithm_glrlm_ShortRunEmphasis&quot;,
+      &quot;logarithm_glszm_LargeAreaEmphasis&quot;,
+      &quot;logarithm_glszm_ZonePercentage&quot;,
+      &quot;logarithm_glszm_ZoneVariance&quot;,
+      &quot;square_firstorder_Energy&quot;,
+      &quot;square_glcm_Correlation&quot;,
+      &quot;square_glcm_Imc1&quot;,
+      &quot;wavelet-LHH_firstorder_Mean&quot;,
+      &quot;wavelet-LLL_firstorder_Range&quot;,
+      &quot;wavelet-LLL_glszm_ZoneEntropy&quot;
+    ],
+    &quot;input_review_suggested&quot;: false,
+    &quot;interpretation&quot;: &quot;Training-range heuristic; not a validated uncertainty estimate.&quot;
+  }
+]</pre><h2>Case explanation</h2><pre>{
+  &quot;method&quot;: &quot;linear_log_odds&quot;,
+  &quot;positive_class&quot;: &quot;squamous_cell_carcinoma&quot;,
+  &quot;units&quot;: &quot;log odds of the positive class&quot;,
+  &quot;baseline&quot;: -2.25790383858991,
+  &quot;total&quot;: -1.9788582819606793,
+  &quot;reconstructed_probability&quot;: 0.12144059832357476,
+  &quot;displayed_contribution_sum&quot;: -0.678240421434961,
+  &quot;remaining_contribution_sum&quot;: 0.9572859780641922,
+  &quot;contributions&quot;: [
+    {
+      &quot;feature&quot;: &quot;lbp-2D_firstorder_10Percentile&quot;,
+      &quot;contribution&quot;: 0.8801804938415879,
+      &quot;transformed_value&quot;: -5.199337582605575
+    },
+    {
+      &quot;feature&quot;: &quot;wavelet-LHH_firstorder_Mean&quot;,
+      &quot;contribution&quot;: -0.7317906239033248,
+      &quot;transformed_value&quot;: -2.0415955069535663
+    },
+    {
+      &quot;feature&quot;: &quot;logarithm_glszm_LargeAreaEmphasis&quot;,
+      &quot;contribution&quot;: -0.7007549408537039,
+      &quot;transformed_value&quot;: -5.199337582605575
+    },
+    {
+      &quot;feature&quot;: &quot;logarithm_gldm_LargeDependenceEmphasis&quot;,
+      &quot;contribution&quot;: -0.508487195087608,
+      &quot;transformed_value&quot;: -5.199337582605575
+    },
+    {
+      &quot;feature&quot;: &quot;original_glszm_ZoneEntropy&quot;,
+      &quot;contribution&quot;: 0.4242609001583072,
+      &quot;transformed_value&quot;: -2.4728927299413153
+    },
+    {
+      &quot;feature&quot;: &quot;wavelet-LHH_firstorder_Median&quot;,
+      &quot;contribution&quot;: 0.2993912549320544,
+      &quot;transformed_value&quot;: -1.357864133202519
+    },
+    {
+      &quot;feature&quot;: &quot;logarithm_gldm_DependenceVariance&quot;,
+      &quot;contribution&quot;: -0.2919434946773372,
+      &quot;transformed_value&quot;: -5.199337582605575
+    },
+    {
+      &quot;feature&quot;: &quot;original_gldm_DependenceEntropy&quot;,
+      &quot;contribution&quot;: 0.2689284949481337,
+      &quot;transformed_value&quot;: -2.0593249375778298
+    },
+    {
+      &quot;feature&quot;: &quot;square_glszm_SizeZoneNonUniformityNormalized&quot;,
+      &quot;contribution&quot;: -0.2641375689626323,
+      &quot;transformed_value&quot;: 1.5675563678660265
+    },
+    {
+      &quot;feature&quot;: &quot;logarithm_gldm_DependenceNonUniformityNormalized&quot;,
+      &quot;contribution&quot;: -0.2147311120018939,
+      &quot;transformed_value&quot;: 2.5277100952818916
+    },
+    {
+      &quot;feature&quot;: &quot;logarithm_glszm_SizeZoneNonUniformityNormalized&quot;,
+      &quot;contribution&quot;: -0.20670607908468183,
+      &quot;transformed_value&quot;: 2.0673376382198154
+    },
+    {
+      &quot;feature&quot;: &quot;wavelet-HLL_firstorder_Median&quot;,
+      &quot;contribution&quot;: 0.202719569194645,
+      &quot;transformed_value&quot;: -1.3915909790758247
+    },
+    {
+      &quot;feature&quot;: &quot;wavelet-LLL_glrlm_GrayLevelNonUniformityNormalized&quot;,
+      &quot;contribution&quot;: 0.17282718242809147,
+      &quot;transformed_value&quot;: 1.302135934234439
+    },
+    {
+      &quot;feature&quot;: &quot;square_firstorder_Median&quot;,
+      &quot;contribution&quot;: -0.16634975262950674,
+      &quot;transformed_value&quot;: -1.828251666233558
+    },
+    {
+      &quot;feature&quot;: &quot;squareroot_firstorder_RootMeanSquared&quot;,
+      &quot;contribution&quot;: 0.158352450262908,
+      &quot;transformed_value&quot;: -1.3341267667486645
+    }
+  ],
+  &quot;prediction&quot;: {
+    &quot;sample_id&quot;: &quot;R01-002-tumour&quot;,
+    &quot;patient_id&quot;: &quot;R01-002&quot;,
+    &quot;prediction&quot;: &quot;adenocarcinoma&quot;,
+    &quot;p_adenocarcinoma&quot;: 0.8785594016764252,
+    &quot;p_squamous_cell_carcinoma&quot;: 0.12144059832357479,
+    &quot;review_suggested&quot;: false,
+    &quot;data_provenance&quot;: &quot;real&quot;
+  },
+  &quot;interpretation&quot;: &quot;Exact fitted linear score after frozen preprocessing. Positive values increase the positive-class log odds. These are associations, not causes or SHAP values.&quot;
+}</pre>
+<h2>Reproducibility</h2><p>Task: subtype<br>Model: rich_accuracy_logistic<br>
+Created: 2026-10-10T07:26:52.205127+00:00</p><pre>Model SHA-256: db9a624ee070cdef56c9dbe49b4d2430c1f4a1d3bf756061a4f6034b67a5a4a8
+Input SHA-256: 840bf4b8d37d78793ac4d7016135ba0ef156f985c05766561082165fda0f36a6
+Features: 1682</pre>
+<p>Feature extraction must match the training procedure. Model probability is not clinical certainty. Feature contributions do not establish biological causation.</p>
+<script type="application/json" id="case-data">{"schema_version": 1, "created_utc": "2026-10-10T07:26:52.205127+00:00", "patient_id": "R01-002", "task": "subtype", "model_name": "rich_accuracy_logistic", "model_sha256": "db9a624ee070cdef56c9dbe49b4d2430c1f4a1d3bf756061a4f6034b67a5a4a8", "input_sha256": "840bf4b8d37d78793ac4d7016135ba0ef156f985c05766561082165fda0f36a6", "input_features": 1682, "predictions": [{"sample_id": "R01-002-tumour", "patient_id": "R01-002", "prediction": "adenocarcinoma", "p_adenocarcinoma": 0.8785594017, "p_squamous_cell_carcinoma": 0.1214405983, "review_suggested": false, "data_provenance": "real"}], "quality": [{"patient_id": "R01-002", "missing_feature_count": 0, "missing_features": [], "reference_available": true, "outside_reference_count": 49, "outside_reference_fraction": 0.029131985731272295, "outside_reference_features": ["original_glszm_ZoneEntropy", "gradient_glszm_SmallAreaLowGrayLevelEmphasis", "gradient_glszm_ZoneEntropy", "lbp-3D-k_firstorder_90Percentile", "lbp-3D-k_firstorder_InterquartileRange", "lbp-3D-k_firstorder_MeanAbsoluteDeviation", "lbp-3D-k_firstorder_RobustMeanAbsoluteDeviation", "lbp-3D-k_firstorder_Variance", "lbp-3D-k_glcm_Autocorrelation", "lbp-3D-k_glcm_Contrast", "lbp-3D-k_glcm_DifferenceAverage", "lbp-3D-k_glcm_DifferenceEntropy", "lbp-3D-k_glcm_DifferenceVariance", "lbp-3D-k_glcm_Id", "lbp-3D-k_glcm_Idm", "lbp-3D-k_glcm_Idmn", "lbp-3D-k_glcm_Idn", "lbp-3D-k_glcm_InverseVariance", "lbp-3D-k_glcm_JointAverage", "lbp-3D-k_glcm_JointEnergy", "lbp-3D-k_glcm_JointEntropy", "lbp-3D-k_glcm_MaximumProbability", "lbp-3D-k_glcm_SumAverage", "lbp-3D-k_glcm_SumEntropy", "lbp-3D-k_glcm_SumSquares", "lbp-3D-k_gldm_DependenceVariance", "lbp-3D-k_gldm_SmallDependenceHighGrayLevelEmphasis", "lbp-3D-k_glszm_GrayLevelNonUniformity", "lbp-3D-k_glszm_SizeZoneNonUniformity", "lbp-3D-k_glszm_ZonePercentage", "lbp-3D-k_ngtdm_Complexity", "logarithm_glcm_Idm", "logarithm_glcm_InverseVariance", "logarithm_gldm_DependenceVariance", "logarithm_gldm_LargeDependenceEmphasis", "logarithm_glrlm_LongRunEmphasis", "logarithm_glrlm_RunLengthNonUniformityNormalized", "logarithm_glrlm_RunPercentage", "logarithm_glrlm_RunVariance", "logarithm_glrlm_ShortRunEmphasis", "logarithm_glszm_LargeAreaEmphasis", "logarithm_glszm_ZonePercentage", "logarithm_glszm_ZoneVariance", "square_firstorder_Energy", "square_glcm_Correlation", "square_glcm_Imc1", "wavelet-LHH_firstorder_Mean", "wavelet-LLL_firstorder_Range", "wavelet-LLL_glszm_ZoneEntropy"], "input_review_suggested": false, "interpretation": "Training-range heuristic; not a validated uncertainty estimate."}], "explanation": {"method": "linear_log_odds", "positive_class": "squamous_cell_carcinoma", "units": "log odds of the positive class", "baseline": -2.25790383858991, "total": -1.9788582819606793, "reconstructed_probability": 0.12144059832357476, "displayed_contribution_sum": -0.678240421434961, "remaining_contribution_sum": 0.9572859780641922, "contributions": [{"feature": "lbp-2D_firstorder_10Percentile", "contribution": 0.8801804938415879, "transformed_value": -5.199337582605575}, {"feature": "wavelet-LHH_firstorder_Mean", "contribution": -0.7317906239033248, "transformed_value": -2.0415955069535663}, {"feature": "logarithm_glszm_LargeAreaEmphasis", "contribution": -0.7007549408537039, "transformed_value": -5.199337582605575}, {"feature": "logarithm_gldm_LargeDependenceEmphasis", "contribution": -0.508487195087608, "transformed_value": -5.199337582605575}, {"feature": "original_glszm_ZoneEntropy", "contribution": 0.4242609001583072, "transformed_value": -2.4728927299413153}, {"feature": "wavelet-LHH_firstorder_Median", "contribution": 0.2993912549320544, "transformed_value": -1.357864133202519}, {"feature": "logarithm_gldm_DependenceVariance", "contribution": -0.2919434946773372, "transformed_value": -5.199337582605575}, {"feature": "original_gldm_DependenceEntropy", "contribution": 0.2689284949481337, "transformed_value": -2.0593249375778298}, {"feature": "square_glszm_SizeZoneNonUniformityNormalized", "contribution": -0.2641375689626323, "transformed_value": 1.5675563678660265}, {"feature": "logarithm_gldm_DependenceNonUniformityNormalized", "contribution": -0.2147311120018939, "transformed_value": 2.5277100952818916}, {"feature": "logarithm_glszm_SizeZoneNonUniformityNormalized", "contribution": -0.20670607908468183, "transformed_value": 2.0673376382198154}, {"feature": "wavelet-HLL_firstorder_Median", "contribution": 0.202719569194645, "transformed_value": -1.3915909790758247}, {"feature": "wavelet-LLL_glrlm_GrayLevelNonUniformityNormalized", "contribution": 0.17282718242809147, "transformed_value": 1.302135934234439}, {"feature": "square_firstorder_Median", "contribution": -0.16634975262950674, "transformed_value": -1.828251666233558}, {"feature": "squareroot_firstorder_RootMeanSquared", "contribution": 0.158352450262908, "transformed_value": -1.3341267667486645}], "prediction": {"sample_id": "R01-002-tumour", "patient_id": "R01-002", "prediction": "adenocarcinoma", "p_adenocarcinoma": 0.8785594016764252, "p_squamous_cell_carcinoma": 0.12144059832357479, "review_suggested": false, "data_provenance": "real"}, "interpretation": "Exact fitted linear score after frozen preprocessing. Positive values increase the positive-class log odds. These are associations, not causes or SHAP values."}, "context": "Research use only. Exploratory public-cohort evidence. No treatment recommendation or clinical validation."}</script></main></html>

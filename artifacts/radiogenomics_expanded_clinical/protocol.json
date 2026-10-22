@@ -1,0 +1,153 @@
+{
+  "dataset_path": "data/radiogenomics_expanded_clinical.csv",
+  "dataset_sha256": "b9e8b8c4006ccd736fd8dfd34585ca060d7873013a78c1fefd00c2117baf056e",
+  "split_sha256": "fda761f19beaa589784d68b16078638f77a9353cd97ac44e24ffb9c55360409c",
+  "seed": 42,
+  "development_patients": 172,
+  "test_patients": 35,
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "thresholds": [
+    0.35,
+    0.45,
+    0.5,
+    0.55,
+    0.65,
+    0.75,
+    0.85
+  ],
+  "selection_metric": "nested CV accuracy; balanced accuracy then AUC break ties",
+  "target_accuracy": 0.83,
+  "clinical_features": [
+    "clinical_age_at_diagnosis",
+    "clinical_male",
+    "clinical_pack_years",
+    "clinical_smoking_never",
+    "clinical_smoking_former",
+    "clinical_smoking_current"
+  ],
+  "previously_inspected_holdout": true,
+  "test_patient_ids_excluded_from_selection": [
+    "R01-002",
+    "R01-003",
+    "R01-004",
+    "R01-018",
+    "R01-021",
+    "R01-028",
+    "R01-030",
+    "R01-033",
+    "R01-039",
+    "R01-041",
+    "R01-042",
+    "R01-044",
+    "R01-048",
+    "R01-054",
+    "R01-075",
+    "R01-076",
+    "R01-083",
+    "R01-084",
+    "R01-087",
+    "R01-097",
+    "R01-100",
+    "R01-103",
+    "R01-111",
+    "R01-114",
+    "R01-116",
+    "R01-117",
+    "R01-124",
+    "R01-126",
+    "R01-131",
+    "R01-133",
+    "R01-137",
+    "R01-138",
+    "R01-141",
+    "R01-144",
+    "R01-146"
+  ],
+  "candidates": {
+    "expanded_clinical_accuracy_logistic": {
+      "estimator": "Pipeline(steps=[('impute',\n                 SimpleImputer(keep_empty_features=True, strategy='median')),\n                ('scale', StandardScaler()), ('select', SelectKBest(k='all')),\n                ('model', LogisticRegression(max_iter=4000, random_state=42))])",
+      "grid": {
+        "model__C": [
+          0.01,
+          0.1,
+          1,
+          10
+        ]
+      },
+      "view": "clinical",
+      "tune_threshold": true
+    },
+    "expanded_clinical_accuracy_catboost": {
+      "estimator": "Pipeline(steps=[('impute',\n                 SimpleImputer(keep_empty_features=True, strategy='median')),\n                ('scale', StandardScaler()), ('select', SelectKBest(k='all')),\n                ('model',\n                 CatBoostClassifier(allow_writing_files=False, iterations=300, learning_rate=0.05, loss_function='Logloss', random_seed=42, thread_count=2, verbose=False))])",
+      "grid": {
+        "model__depth": [
+          2,
+          3,
+          4
+        ],
+        "model__l2_leaf_reg": [
+          3,
+          20
+        ]
+      },
+      "view": "clinical",
+      "tune_threshold": true
+    },
+    "expanded_clinical_hist_boosting": {
+      "estimator": "Pipeline(steps=[('impute',\n                 SimpleImputer(keep_empty_features=True, strategy='median')),\n                ('scale', StandardScaler()),\n                ('model',\n                 HistGradientBoostingClassifier(learning_rate=0.05,\n                                                max_iter=200,\n                                                random_state=42))])",
+      "grid": {
+        "model__max_leaf_nodes": [
+          3,
+          7
+        ],
+        "model__min_samples_leaf": [
+          5,
+          10
+        ],
+        "model__l2_regularization": [
+          3,
+          20
+        ]
+      },
+      "view": "clinical",
+      "tune_threshold": true
+    },
+    "expanded_clinical_extra_trees": {
+      "estimator": "Pipeline(steps=[('impute',\n                 SimpleImputer(keep_empty_features=True, strategy='median')),\n                ('scale', StandardScaler()),\n                ('model',\n                 ExtraTreesClassifier(n_estimators=300, n_jobs=2,\n                                      random_state=42))])",
+      "grid": {
+        "model__min_samples_leaf": [
+          5,
+          10
+        ],
+        "model__max_features": [
+          0.7,
+          1.0
+        ]
+      },
+      "view": "clinical",
+      "tune_threshold": true
+    },
+    "expanded_clinical_voting": {
+      "estimator": "Pipeline(steps=[('impute',\n                 SimpleImputer(keep_empty_features=True, strategy='median')),\n                ('scale', StandardScaler()),\n                ('model',\n                 VotingClassifier(estimators=[('logistic',\n                                               LogisticRegression(C=0.1,\n                                                                  max_iter=4000,\n                                                                  random_state=42)),\n                                              ('boosting',\n                                               CatBoostClassifier(allow_writing_files=False, depth=2, iterations=300, l2_leaf_reg=20, learning_rate=0.05, loss_function='Logloss', random_seed=42, thread_count=2, verbose=False))],\n                                  voting='soft'))])",
+      "grid": {
+        "model__weights": [
+          [
+            2,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            2
+          ]
+        ]
+      },
+      "view": "clinical",
+      "tune_threshold": true
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "tests": "30 pytest tests passed; 3 refinement tests rechecked after summary update",
+  "dashboard": "AppTest default accuracy model, refinement comparison and bagged-model example inference passed; earlier expanded clinical switch passed",
+  "streamlit_health": "ok",
+  "pinned_radiogenomics_release": "SHA-256 matches downloaded feature release",
+  "target_accuracy": 0.83,
+  "target_met": true,
+  "results": "docs/IMPROVEMENT_RESULTS.md",
+  "target_interpretation": "Development-selected model scored 88.6%; highest observed experimental candidate scored 91.4% on the previously inspected holdout. Both exceed the numeric 83% target; independent superiority is unconfirmed.",
+  "validated_superiority_over_source_paper": false,
+  "selected_model": "rich_accuracy_logistic",
+  "holdout_accuracy": 0.8857142857142857,
+  "holdout_correct": 31,
+  "holdout_patients": 35,
+  "nested_development_accuracy": 0.8076923076923077,
+  "selected_threshold": 0.55,
+  "accuracy_ci95": [
+    0.7714285714285715,
+    0.9714285714285714
+  ],
+  "model_sha256": "db9a624ee070cdef56c9dbe49b4d2430c1f4a1d3bf756061a4f6034b67a5a4a8",
+  "saved_model_predictions": "All 24 accuracy, expanded-clinical and refinement bundles match saved holdout predictions; original selected model SHA-256 unchanged",
+  "documentation_tables": "All 12 accuracy and 7 refinement comparison rows match their reports",
+  "majority_baseline_guard": "Expanded clinical CV matching its 83.7% majority baseline does not count as target achievement.",
+  "refinement_results": "docs/REFINEMENT_RESULTS.md",
+  "highest_observed_candidate": "bagged_rich_logistic",
+  "highest_observed_accuracy": 0.9142857142857143,
+  "highest_observed_correct": 32,
+  "highest_observed_accuracy_ci95": [
+    0.8271428571428573,
+    1.0
+  ],
+  "highest_observed_balanced_accuracy": 0.7857142857142857,
+  "highest_observed_auc": 0.846938775510204,
+  "highest_observed_scc_recall": 0.5714285714285714,
+  "highest_observed_candidate_development_selected": false,
+  "highest_observed_candidate_independently_confirmed": false,
+  "refinement_default_changed": false,
+  "refinement_verification": "artifacts/radiogenomics_refinement/verification.json"
+}

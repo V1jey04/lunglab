@@ -1,0 +1,566 @@
+{
+  "evaluation": "nested stratified patient CV on the original development patients only",
+  "target_paper_accuracy": 0.83,
+  "development_patients": 161,
+  "excluded_previously_inspected_test_ids": [
+    "LUNG1-004",
+    "LUNG1-006",
+    "LUNG1-011",
+    "LUNG1-031",
+    "LUNG1-032",
+    "LUNG1-052",
+    "LUNG1-061",
+    "LUNG1-064",
+    "LUNG1-098",
+    "LUNG1-107",
+    "LUNG1-109",
+    "LUNG1-121",
+    "LUNG1-131",
+    "LUNG1-146",
+    "LUNG1-151",
+    "LUNG1-167",
+    "LUNG1-173",
+    "LUNG1-197",
+    "LUNG1-203",
+    "LUNG1-230",
+    "LUNG1-285",
+    "LUNG1-292",
+    "LUNG1-295",
+    "LUNG1-296",
+    "LUNG1-302",
+    "LUNG1-312",
+    "LUNG1-334",
+    "LUNG1-339",
+    "LUNG1-356",
+    "LUNG1-359",
+    "LUNG1-362",
+    "LUNG1-364",
+    "LUNG1-373",
+    "LUNG1-389",
+    "LUNG1-390",
+    "LUNG1-393",
+    "LUNG1-397",
+    "LUNG1-401",
+    "LUNG1-416",
+    "LUNG1-418",
+    "LUNG1-421"
+  ],
+  "dataset_sha256": "0914dc87c74864927a39d3d50a9749d001d2c785c30337260f98a4af9c9f02be",
+  "seed": 42,
+  "outer_folds": 5,
+  "models": {
+    "paper_mlp": {
+      "nested_cv_accuracy": 0.6335403726708074,
+      "nested_cv_balanced_accuracy": 0.5454268292682927,
+      "nested_cv_roc_auc": 0.5475609756097561,
+      "nested_cv_macro_f1": 0.5419298837826108,
+      "adenocarcinoma_recall": 0.36585365853658536,
+      "squamous_recall": 0.725,
+      "confusion_matrix": [
+        [
+          15,
+          26
+        ],
+        [
+          33,
+          87
+        ]
+      ],
+      "folds": [
+        {
+          "fold": 1,
+          "accuracy": 0.5151515151515151,
+          "balanced_accuracy": 0.38888888888888884,
+          "roc_auc": 0.35185185185185186
+        },
+        {
+          "fold": 2,
+          "accuracy": 0.6875,
+          "balanced_accuracy": 0.6666666666666667,
+          "roc_auc": 0.7864583333333333
+        },
+        {
+          "fold": 3,
+          "accuracy": 0.71875,
+          "balanced_accuracy": 0.6041666666666667,
+          "roc_auc": 0.47395833333333337
+        },
+        {
+          "fold": 4,
+          "accuracy": 0.65625,
+          "balanced_accuracy": 0.6458333333333333,
+          "roc_auc": 0.609375
+        },
+        {
+          "fold": 5,
+          "accuracy": 0.59375,
+          "balanced_accuracy": 0.4375,
+          "roc_auc": 0.5
+        }
+      ],
+      "parameters_by_fold": [
+        {
+          "select__alpha": 0.001
+        },
+        {
+          "select__alpha": 0.001
+        },
+        {
+          "select__alpha": 0.001
+        },
+        {
+          "select__alpha": 0.001
+        },
+        {
+          "select__alpha": 0.001
+        }
+      ]
+    },
+    "catboost_original": {
+      "nested_cv_accuracy": 0.7018633540372671,
+      "nested_cv_balanced_accuracy": 0.5430894308943089,
+      "nested_cv_roc_auc": 0.5747967479674797,
+      "nested_cv_macro_f1": 0.5426136363636364,
+      "adenocarcinoma_recall": 0.21951219512195122,
+      "squamous_recall": 0.8666666666666667,
+      "confusion_matrix": [
+        [
+          9,
+          32
+        ],
+        [
+          16,
+          104
+        ]
+      ],
+      "folds": [
+        {
+          "fold": 1,
+          "accuracy": 0.6363636363636364,
+          "balanced_accuracy": 0.4722222222222222,
+          "roc_auc": 0.4814814814814815
+        },
+        {
+          "fold": 2,
+          "accuracy": 0.78125,
+          "balanced_accuracy": 0.6875,
+          "roc_auc": 0.7916666666666666
+        },
+        {
+          "fold": 3,
+          "accuracy": 0.78125,
+          "balanced_accuracy": 0.6041666666666667,
+          "roc_auc": 0.625
+        },
+        {
+          "fold": 4,
+          "accuracy": 0.625,
+          "balanced_accuracy": 0.4583333333333333,
+          "roc_auc": 0.5
+        },
+        {
+          "fold": 5,
+          "accuracy": 0.6875,
+          "balanced_accuracy": 0.5,
+          "roc_auc": 0.5260416666666667
+        }
+      ],
+      "parameters_by_fold": [
+        {
+          "model__depth": 3,
+          "model__l2_leaf_reg": 10
+        },
+        {
+          "model__depth": 3,
+          "model__l2_leaf_reg": 3
+        },
+        {
+          "model__depth": 5,
+          "model__l2_leaf_reg": 3
+        },
+        {
+          "model__depth": 5,
+          "model__l2_leaf_reg": 3
+        },
+        {
+          "model__depth": 5,
+          "model__l2_leaf_reg": 3
+        }
+      ]
+    },
+    "robust_logistic": {
+      "nested_cv_accuracy": 0.5590062111801242,
+      "nested_cv_balanced_accuracy": 0.5034552845528455,
+      "nested_cv_roc_auc": 0.540650406504065,
+      "nested_cv_macro_f1": 0.4932393492042381,
+      "adenocarcinoma_recall": 0.3902439024390244,
+      "squamous_recall": 0.6166666666666667,
+      "confusion_matrix": [
+        [
+          16,
+          25
+        ],
+        [
+          46,
+          74
+        ]
+      ],
+      "folds": [
+        {
+          "fold": 1,
+          "accuracy": 0.5454545454545454,
+          "balanced_accuracy": 0.4444444444444444,
+          "roc_auc": 0.49074074074074076
+        },
+        {
+          "fold": 2,
+          "accuracy": 0.65625,
+          "balanced_accuracy": 0.6041666666666667,
+          "roc_auc": 0.6770833333333334
+        },
+        {
+          "fold": 3,
+          "accuracy": 0.46875,
+          "balanced_accuracy": 0.5208333333333334,
+          "roc_auc": 0.5260416666666666
+        },
+        {
+          "fold": 4,
+          "accuracy": 0.53125,
+          "balanced_accuracy": 0.4375,
+          "roc_auc": 0.4479166666666667
+        },
+        {
+          "fold": 5,
+          "accuracy": 0.59375,
+          "balanced_accuracy": 0.5208333333333333,
+          "roc_auc": 0.5416666666666666
+        }
+      ],
+      "parameters_by_fold": [
+        {
+          "model__C": 0.1,
+          "select__k": "all"
+        },
+        {
+          "model__C": 0.1,
+          "select__k": "all"
+        },
+        {
+          "model__C": 0.01,
+          "select__k": 10
+        },
+        {
+          "model__C": 0.01,
+          "select__k": 10
+        },
+        {
+          "model__C": 0.1,
+          "select__k": "all"
+        }
+      ]
+    },
+    "quantile_svm": {
+      "nested_cv_accuracy": 0.639751552795031,
+      "nested_cv_balanced_accuracy": 0.5415650406504066,
+      "nested_cv_roc_auc": 0.5916666666666667,
+      "nested_cv_macro_f1": 0.5399093417422152,
+      "adenocarcinoma_recall": 0.34146341463414637,
+      "squamous_recall": 0.7416666666666667,
+      "confusion_matrix": [
+        [
+          14,
+          27
+        ],
+        [
+          31,
+          89
+        ]
+      ],
+      "folds": [
+        {
+          "fold": 1,
+          "accuracy": 0.6363636363636364,
+          "balanced_accuracy": 0.5416666666666666,
+          "roc_auc": 0.5833333333333334
+        },
+        {
+          "fold": 2,
+          "accuracy": 0.71875,
+          "balanced_accuracy": 0.6875,
+          "roc_auc": 0.765625
+        },
+        {
+          "fold": 3,
+          "accuracy": 0.6875,
+          "balanced_accuracy": 0.5416666666666667,
+          "roc_auc": 0.6614583333333333
+        },
+        {
+          "fold": 4,
+          "accuracy": 0.59375,
+          "balanced_accuracy": 0.4791666666666667,
+          "roc_auc": 0.5208333333333334
+        },
+        {
+          "fold": 5,
+          "accuracy": 0.5625,
+          "balanced_accuracy": 0.4583333333333333,
+          "roc_auc": 0.46875
+        }
+      ],
+      "parameters_by_fold": [
+        {
+          "model__C": 1,
+          "model__gamma": "scale",
+          "select__k": "all"
+        },
+        {
+          "model__C": 1,
+          "model__gamma": "scale",
+          "select__k": "all"
+        },
+        {
+          "model__C": 10,
+          "model__gamma": "scale",
+          "select__k": "all"
+        },
+        {
+          "model__C": 1,
+          "model__gamma": "scale",
+          "select__k": "all"
+        },
+        {
+          "model__C": 10,
+          "model__gamma": "scale",
+          "select__k": 10
+        }
+      ]
+    },
+    "shrinkage_lda": {
+      "nested_cv_accuracy": 0.5714285714285714,
+      "nested_cv_balanced_accuracy": 0.503760162601626,
+      "nested_cv_roc_auc": 0.46971544715447155,
+      "nested_cv_macro_f1": 0.4968066313357793,
+      "adenocarcinoma_recall": 0.36585365853658536,
+      "squamous_recall": 0.6416666666666667,
+      "confusion_matrix": [
+        [
+          15,
+          26
+        ],
+        [
+          43,
+          77
+        ]
+      ],
+      "folds": [
+        {
+          "fold": 1,
+          "accuracy": 0.5454545454545454,
+          "balanced_accuracy": 0.47916666666666663,
+          "roc_auc": 0.37500000000000006
+        },
+        {
+          "fold": 2,
+          "accuracy": 0.625,
+          "balanced_accuracy": 0.5833333333333333,
+          "roc_auc": 0.5833333333333334
+        },
+        {
+          "fold": 3,
+          "accuracy": 0.5625,
+          "balanced_accuracy": 0.5,
+          "roc_auc": 0.5885416666666667
+        },
+        {
+          "fold": 4,
+          "accuracy": 0.625,
+          "balanced_accuracy": 0.5416666666666667,
+          "roc_auc": 0.5
+        },
+        {
+          "fold": 5,
+          "accuracy": 0.5,
+          "balanced_accuracy": 0.4166666666666667,
+          "roc_auc": 0.39583333333333337
+        }
+      ],
+      "parameters_by_fold": [
+        {
+          "select__k": 10
+        },
+        {
+          "select__k": "all"
+        },
+        {
+          "select__k": 10
+        },
+        {
+          "select__k": 10
+        },
+        {
+          "select__k": "all"
+        }
+      ]
+    },
+    "extra_trees": {
+      "nested_cv_accuracy": 0.6211180124223602,
+      "nested_cv_balanced_accuracy": 0.5370934959349594,
+      "nested_cv_roc_auc": 0.5613821138211382,
+      "nested_cv_macro_f1": 0.5328005328005327,
+      "adenocarcinoma_recall": 0.36585365853658536,
+      "squamous_recall": 0.7083333333333334,
+      "confusion_matrix": [
+        [
+          15,
+          26
+        ],
+        [
+          35,
+          85
+        ]
+      ],
+      "folds": [
+        {
+          "fold": 1,
+          "accuracy": 0.6060606060606061,
+          "balanced_accuracy": 0.4861111111111111,
+          "roc_auc": 0.48611111111111105
+        },
+        {
+          "fold": 2,
+          "accuracy": 0.6875,
+          "balanced_accuracy": 0.7083333333333333,
+          "roc_auc": 0.7916666666666666
+        },
+        {
+          "fold": 3,
+          "accuracy": 0.71875,
+          "balanced_accuracy": 0.6458333333333333,
+          "roc_auc": 0.7291666666666666
+        },
+        {
+          "fold": 4,
+          "accuracy": 0.53125,
+          "balanced_accuracy": 0.4375,
+          "roc_auc": 0.4739583333333333
+        },
+        {
+          "fold": 5,
+          "accuracy": 0.5625,
+          "balanced_accuracy": 0.4166666666666667,
+          "roc_auc": 0.4427083333333333
+        }
+      ],
+      "parameters_by_fold": [
+        {
+          "model__max_features": 0.7,
+          "model__min_samples_leaf": 10,
+          "select__k": "all"
+        },
+        {
+          "model__max_features": 0.3,
+          "model__min_samples_leaf": 10,
+          "select__k": "all"
+        },
+        {
+          "model__max_features": 0.7,
+          "model__min_samples_leaf": 10,
+          "select__k": "all"
+        },
+        {
+          "model__max_features": 0.3,
+          "model__min_samples_leaf": 10,
+          "select__k": "all"
+        },
+        {
+          "model__max_features": 0.7,
+          "model__min_samples_leaf": 10,
+          "select__k": "all"
+        }
+      ]
+    },
+    "hist_gradient_boosting": {
+      "nested_cv_accuracy": 0.6086956521739131,
+      "nested_cv_balanced_accuracy": 0.5528455284552846,
+      "nested_cv_roc_auc": 0.5701219512195121,
+      "nested_cv_macro_f1": 0.5405625764370159,
+      "adenocarcinoma_recall": 0.43902439024390244,
+      "squamous_recall": 0.6666666666666666,
+      "confusion_matrix": [
+        [
+          18,
+          23
+        ],
+        [
+          40,
+          80
+        ]
+      ],
+      "folds": [
+        {
+          "fold": 1,
+          "accuracy": 0.48484848484848486,
+          "balanced_accuracy": 0.3680555555555556,
+          "roc_auc": 0.4444444444444445
+        },
+        {
+          "fold": 2,
+          "accuracy": 0.78125,
+          "balanced_accuracy": 0.7708333333333333,
+          "roc_auc": 0.8229166666666667
+        },
+        {
+          "fold": 3,
+          "accuracy": 0.6875,
+          "balanced_accuracy": 0.7083333333333333,
+          "roc_auc": 0.7656249999999999
+        },
+        {
+          "fold": 4,
+          "accuracy": 0.5,
+          "balanced_accuracy": 0.4166666666666667,
+          "roc_auc": 0.49479166666666663
+        },
+        {
+          "fold": 5,
+          "accuracy": 0.59375,
+          "balanced_accuracy": 0.5208333333333333,
+          "roc_auc": 0.4427083333333333
+        }
+      ],
+      "parameters_by_fold": [
+        {
+          "model__l2_regularization": 10,
+          "model__learning_rate": 0.03,
+          "select__k": "all"
+        },
+        {
+          "model__l2_regularization": 10,
+          "model__learning_rate": 0.03,
+          "select__k": 10
+        },
+        {
+          "model__l2_regularization": 10,
+          "model__learning_rate": 0.03,
+          "select__k": "all"
+        },
+        {
+          "model__l2_regularization": 10,
+          "model__learning_rate": 0.03,
+          "select__k": 10
+        },
+        {
+          "model__l2_regularization": 10,
+          "model__learning_rate": 0.03,
+          "select__k": "all"
+        }
+      ]
+    }
+  },
+  "selection_metric": "balanced_accuracy",
+  "target_met": false,
+  "selected_model_by_nested_cv": "hist_gradient_boosting",
+  "interpretation": "These are development results. Selecting a winner across model families still requires a new external holdout before claiming superiority. The original test cases were excluded."
+}

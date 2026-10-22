@@ -1,0 +1,911 @@
+{
+  "schema_version": 1,
+  "model_sha256": "7ffc8d7aa75e234e714d1fc0ed8178f91d3178d2ba377a79b63807fac24cbe77",
+  "source_sha256": "5861908cdd876101a8215a031c372caf61c2c3c9af140d566a7a90005e152ef2",
+  "training_patients": 104,
+  "source_hash_verified_against_bundle": true,
+  "training_patient_ids_sha256": "1e90cb7d82d6ef6af76218750986607910aef98e04343b7c60c9f05a8028fca9",
+  "feature_names": [
+    "clinical_age_at_diagnosis",
+    "clinical_male",
+    "clinical_pack_years",
+    "clinical_smoking_never",
+    "clinical_smoking_former",
+    "clinical_smoking_current",
+    "clinical_pathological_t",
+    "clinical_pathological_n",
+    "clinical_grade",
+    "clinical_lymphovascular_invasion",
+    "clinical_pleural_invasion",
+    "original_shape_Maximum2DDiameterColumn",
+    "original_shape_Maximum2DDiameterRow",
+    "original_shape_Maximum2DDiameterSlice",
+    "original_shape_Maximum3DDiameter",
+    "original_shape_MeshVolume",
+    "original_shape_Sphericity",
+    "original_shape_SurfaceArea",
+    "original_shape_SurfaceVolumeRatio",
+    "original_firstorder_10Percentile",
+    "original_firstorder_90Percentile",
+    "original_firstorder_Energy",
+    "original_firstorder_Entropy",
+    "original_firstorder_InterquartileRange",
+    "original_firstorder_Kurtosis",
+    "original_firstorder_Maximum",
+    "original_firstorder_MeanAbsoluteDeviation",
+    "original_firstorder_Mean",
+    "original_firstorder_Median",
+    "original_firstorder_Minimum",
+    "original_firstorder_Range",
+    "original_firstorder_RobustMeanAbsoluteDeviation",
+    "original_firstorder_RootMeanSquared",
+    "original_firstorder_Skewness",
+    "original_firstorder_TotalEnergy",
+    "original_firstorder_Uniformity",
+    "original_firstorder_Variance",
+    "original_glcm_Autocorrelation",
+    "original_glcm_ClusterProminence",
+    "original_glcm_ClusterShade",
+    "original_glcm_ClusterTendency",
+    "original_glcm_Contrast",
+    "original_glcm_Correlation",
+    "original_glcm_DifferenceAverage",
+    "original_glcm_DifferenceEntropy",
+    "original_glcm_DifferenceVariance",
+    "original_glcm_Id",
+    "original_glcm_Idm",
+    "original_glcm_Idmn",
+    "original_glcm_Idn",
+    "original_glcm_Imc1",
+    "original_glcm_Imc2",
+    "original_glcm_InverseVariance",
+    "original_glcm_JointAverage",
+    "original_glcm_JointEnergy",
+    "original_glcm_JointEntropy",
+    "original_glcm_MCC",
+    "original_glcm_MaximumProbability",
+    "original_glcm_SumAverage",
+    "original_glcm_SumEntropy",
+    "original_glcm_SumSquares",
+    "original_gldm_DependenceEntropy",
+    "original_gldm_DependenceNonUniformity",
+    "original_gldm_DependenceNonUniformityNormalized",
+    "original_gldm_DependenceVariance",
+    "original_gldm_GrayLevelNonUniformity",
+    "original_gldm_GrayLevelVariance",
+    "original_gldm_HighGrayLevelEmphasis",
+    "original_gldm_LargeDependenceEmphasis",
+    "original_gldm_LargeDependenceHighGrayLevelEmphasis",
+    "original_gldm_LargeDependenceLowGrayLevelEmphasis",
+    "original_gldm_LowGrayLevelEmphasis",
+    "original_gldm_SmallDependenceEmphasis",
+    "original_gldm_SmallDependenceHighGrayLevelEmphasis",
+    "original_gldm_SmallDependenceLowGrayLevelEmphasis",
+    "original_glrlm_GrayLevelNonUniformity",
+    "original_glrlm_GrayLevelNonUniformityNormalized",
+    "original_glrlm_GrayLevelVariance",
+    "original_glrlm_HighGrayLevelRunEmphasis",
+    "original_glrlm_LongRunEmphasis",
+    "original_glrlm_LongRunHighGrayLevelEmphasis",
+    "original_glrlm_LongRunLowGrayLevelEmphasis",
+    "original_glrlm_LowGrayLevelRunEmphasis",
+    "original_glrlm_RunEntropy",
+    "original_glrlm_RunLengthNonUniformity",
+    "original_glrlm_RunLengthNonUniformityNormalized",
+    "original_glrlm_RunPercentage",
+    "original_glrlm_RunVariance",
+    "original_glrlm_ShortRunEmphasis",
+    "original_glrlm_ShortRunHighGrayLevelEmphasis",
+    "original_glrlm_ShortRunLowGrayLevelEmphasis",
+    "original_glszm_GrayLevelNonUniformity",
+    "original_glszm_GrayLevelNonUniformityNormalized",
+    "original_glszm_GrayLevelVariance",
+    "original_glszm_HighGrayLevelZoneEmphasis",
+    "original_glszm_LargeAreaEmphasis",
+    "original_glszm_LargeAreaHighGrayLevelEmphasis",
+    "original_glszm_LargeAreaLowGrayLevelEmphasis",
+    "original_glszm_LowGrayLevelZoneEmphasis",
+    "original_glszm_SizeZoneNonUniformity",
+    "original_glszm_SizeZoneNonUniformityNormalized",
+    "original_glszm_SmallAreaEmphasis",
+    "original_glszm_SmallAreaHighGrayLevelEmphasis",
+    "original_glszm_SmallAreaLowGrayLevelEmphasis",
+    "original_glszm_ZoneEntropy",
+    "original_glszm_ZonePercentage",
+    "original_glszm_ZoneVariance",
+    "original_ngtdm_Busyness",
+    "original_ngtdm_Coarseness",
+    "original_ngtdm_Complexity",
+    "original_ngtdm_Contrast",
+    "original_ngtdm_Strength"
+  ],
+  "statistics": {
+    "clinical_age_at_diagnosis": {
+      "median": 70.0,
+      "minimum": 43.0,
+      "maximum": 87.0,
+      "q01": 46.0,
+      "q99": 84.97
+    },
+    "clinical_male": {
+      "median": 1.0,
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "q01": 0.0,
+      "q99": 1.0
+    },
+    "clinical_pack_years": {
+      "median": 40.5,
+      "minimum": 1.0,
+      "maximum": 120.0,
+      "q01": 1.0,
+      "q99": 120.0
+    },
+    "clinical_smoking_never": {
+      "median": 0.0,
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "q01": 0.0,
+      "q99": 1.0
+    },
+    "clinical_smoking_former": {
+      "median": 1.0,
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "q01": 0.0,
+      "q99": 1.0
+    },
+    "clinical_smoking_current": {
+      "median": 0.0,
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "q01": 0.0,
+      "q99": 1.0
+    },
+    "clinical_pathological_t": {
+      "median": 1.0,
+      "minimum": 0.0,
+      "maximum": 4.0,
+      "q01": 0.0,
+      "q99": 4.0
+    },
+    "clinical_pathological_n": {
+      "median": 0.0,
+      "minimum": 0.0,
+      "maximum": 2.0,
+      "q01": 0.0,
+      "q99": 2.0
+    },
+    "clinical_grade": {
+      "median": 2.0,
+      "minimum": 1.0,
+      "maximum": 3.0,
+      "q01": 1.0,
+      "q99": 3.0
+    },
+    "clinical_lymphovascular_invasion": {
+      "median": 0.0,
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "q01": 0.0,
+      "q99": 1.0
+    },
+    "clinical_pleural_invasion": {
+      "median": 0.0,
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "q01": 0.0,
+      "q99": 1.0
+    },
+    "original_shape_Maximum2DDiameterColumn": {
+      "median": 36.75054806866483,
+      "minimum": 13.2665359669546,
+      "maximum": 137.15863078397967,
+      "q01": 13.385028662501856,
+      "q99": 130.93380392416475
+    },
+    "original_shape_Maximum2DDiameterRow": {
+      "median": 35.05309789268218,
+      "minimum": 13.350005852058642,
+      "maximum": 126.85738186351976,
+      "q01": 14.351938894536659,
+      "q99": 110.40019796974047
+    },
+    "original_shape_Maximum2DDiameterSlice": {
+      "median": 38.164735183617935,
+      "minimum": 12.749621221593014,
+      "maximum": 121.82260048433244,
+      "q01": 12.90336163330358,
+      "q99": 103.37760609227199
+    },
+    "original_shape_Maximum3DDiameter": {
+      "median": 42.10657905420899,
+      "minimum": 13.582071132562955,
+      "maximum": 146.5135972088769,
+      "q01": 14.976904773839964,
+      "q99": 138.83443734081123
+    },
+    "original_shape_MeshVolume": {
+      "median": 8286.315282185873,
+      "minimum": 727.9415269036799,
+      "maximum": 361514.455187502,
+      "q01": 750.7834022675338,
+      "q99": 272100.0517552422
+    },
+    "original_shape_Sphericity": {
+      "median": 0.5739886571377047,
+      "minimum": 0.2974709698916106,
+      "maximum": 0.8270655037628382,
+      "q01": 0.33890358626170186,
+      "q99": 0.8215625915135184
+    },
+    "original_shape_SurfaceArea": {
+      "median": 3252.511177038864,
+      "minimum": 473.1605713680722,
+      "maximum": 70224.40938214987,
+      "q01": 500.64962794130696,
+      "q99": 46629.02797323886
+    },
+    "original_shape_SurfaceVolumeRatio": {
+      "median": 0.4247886390477128,
+      "minimum": 0.132655824238688,
+      "maximum": 0.8789272640580423,
+      "q01": 0.1486022803571987,
+      "q99": 0.8179510455301047
+    },
+    "original_firstorder_10Percentile": {
+      "median": -756.4,
+      "minimum": -984.0,
+      "maximum": -66.0,
+      "q01": -974.34,
+      "q99": -74.25000000000009
+    },
+    "original_firstorder_90Percentile": {
+      "median": 80.5,
+      "minimum": -381.0,
+      "maximum": 205.0,
+      "q01": -354.1,
+      "q99": 195.682
+    },
+    "original_firstorder_Energy": {
+      "median": 1871402770.0,
+      "minimum": 60867746.0,
+      "maximum": 85581519897.0,
+      "q01": 64439594.77,
+      "q99": 54438100267.36999
+    },
+    "original_firstorder_Entropy": {
+      "median": 5.145708779758339,
+      "minimum": 2.970557095376354,
+      "maximum": 5.780676617954111,
+      "q01": 3.0936082250868204,
+      "q99": 5.696574878830805
+    },
+    "original_firstorder_InterquartileRange": {
+      "median": 505.75,
+      "minimum": 43.0,
+      "maximum": 834.0,
+      "q01": 46.15,
+      "q99": 826.13
+    },
+    "original_firstorder_Kurtosis": {
+      "median": 2.083333736469468,
+      "minimum": 1.2814615952842474,
+      "maximum": 18.22421420648825,
+      "q01": 1.434163891794846,
+      "q99": 16.35199138789027
+    },
+    "original_firstorder_Maximum": {
+      "median": 427.0,
+      "minimum": 45.0,
+      "maximum": 2671.0,
+      "q01": 46.18,
+      "q99": 2313.9099999999994
+    },
+    "original_firstorder_MeanAbsoluteDeviation": {
+      "median": 256.53918997281426,
+      "minimum": 55.39633841169295,
+      "maximum": 391.1598486603641,
+      "q01": 56.81577606187056,
+      "q99": 382.41221797841854
+    },
+    "original_firstorder_Mean": {
+      "median": -291.8067185001422,
+      "minimum": -700.1477311497782,
+      "maximum": 10.103754077514235,
+      "q01": -663.8425274160463,
+      "q99": 4.59984607755161
+    },
+    "original_firstorder_Median": {
+      "median": -208.0,
+      "minimum": -775.0,
+      "maximum": 50.0,
+      "q01": -701.94,
+      "q99": 47.609999999999985
+    },
+    "original_firstorder_Minimum": {
+      "median": -1024.0,
+      "minimum": -1270.0,
+      "maximum": -711.0,
+      "q01": -1024.0,
+      "q99": -763.6
+    },
+    "original_firstorder_Range": {
+      "median": 1439.5,
+      "minimum": 883.0,
+      "maximum": 3695.0,
+      "q01": 889.6,
+      "q99": 3337.9099999999994
+    },
+    "original_firstorder_RobustMeanAbsoluteDeviation": {
+      "median": 201.34941373610883,
+      "minimum": 20.285261309048664,
+      "maximum": 327.2201466207566,
+      "q01": 21.18307119362194,
+      "q99": 320.0368837557096
+    },
+    "original_firstorder_RootMeanSquared": {
+      "median": 437.21063173038783,
+      "minimum": 97.97079289827371,
+      "maximum": 747.4413494013764,
+      "q01": 100.45945768842486,
+      "q99": 696.7247418366904
+    },
+    "original_firstorder_Skewness": {
+      "median": -0.31811987189272317,
+      "minimum": -3.5016542981057595,
+      "maximum": 1.2912584595295755,
+      "q01": -3.286957941139115,
+      "q99": 1.1613447005386874
+    },
+    "original_firstorder_TotalEnergy": {
+      "median": 1534584357.3021302,
+      "minimum": 51198281.82106211,
+      "maximum": 55469802765.31382,
+      "q01": 52098011.39664801,
+      "q99": 41292569426.54873
+    },
+    "original_firstorder_Uniformity": {
+      "median": 0.03242144764653625,
+      "minimum": 0.0203439492699772,
+      "maximum": 0.1986174936227396,
+      "q01": 0.020950134670207454,
+      "q99": 0.18249326190936205
+    },
+    "original_firstorder_Variance": {
+      "median": 88663.43531741001,
+      "minimum": 9577.044017258071,
+      "maximum": 192929.57245819696,
+      "q01": 9976.181426818928,
+      "q99": 183239.26307610256
+    },
+    "original_glcm_Autocorrelation": {
+      "median": 1071.8863607580874,
+      "minimum": 253.5867168856538,
+      "maximum": 1810.3770950967505,
+      "q01": 297.4324969815318,
+      "q99": 1778.8435829731036
+    },
+    "original_glcm_ClusterProminence": {
+      "median": 473471.50196237804,
+      "minimum": 16873.755827532106,
+      "maximum": 1958327.9169720432,
+      "q01": 22434.975710995473,
+      "q99": 1502868.9160494355
+    },
+    "original_glcm_ClusterShade": {
+      "median": -3038.1931661819103,
+      "minimum": -17510.709560462306,
+      "maximum": 7563.018287090502,
+      "q01": -15436.567214175651,
+      "q99": 6061.434140919646
+    },
+    "original_glcm_ClusterTendency": {
+      "median": 405.5211792800293,
+      "minimum": 32.10380064161832,
+      "maximum": 1000.743351744396,
+      "q01": 35.6640051083158,
+      "q99": 946.2645503529393
+    },
+    "original_glcm_Contrast": {
+      "median": 88.08984247107287,
+      "minimum": 7.950892985010449,
+      "maximum": 240.7740992895912,
+      "q01": 8.603849901674419,
+      "q99": 202.91548405834544
+    },
+    "original_glcm_Correlation": {
+      "median": 0.642725036919858,
+      "minimum": 0.2755559514683224,
+      "maximum": 0.9226726572284832,
+      "q01": 0.2863298218051026,
+      "q99": 0.895035978058101
+    },
+    "original_glcm_DifferenceAverage": {
+      "median": 6.781673573859142,
+      "minimum": 1.5842657551530546,
+      "maximum": 11.187540759439608,
+      "q01": 1.6174763155389678,
+      "q99": 10.088578577398575
+    },
+    "original_glcm_DifferenceEntropy": {
+      "median": 4.164468007379545,
+      "minimum": 2.3275384767937135,
+      "maximum": 4.932338365922815,
+      "q01": 2.3504786334548164,
+      "q99": 4.747160608423631
+    },
+    "original_glcm_DifferenceVariance": {
+      "median": 39.27668357107267,
+      "minimum": 5.338133302518301,
+      "maximum": 112.47726310015511,
+      "q01": 6.034104181561296,
+      "q99": 110.70213744928142
+    },
+    "original_glcm_Id": {
+      "median": 0.2735306920129287,
+      "minimum": 0.1941180761106873,
+      "maximum": 0.5811887285432706,
+      "q01": 0.20086194986107958,
+      "q99": 0.5551862328435704
+    },
+    "original_glcm_Idm": {
+      "median": 0.1889308239456266,
+      "minimum": 0.1129652779735546,
+      "maximum": 0.5437025171520552,
+      "q01": 0.11762784466066427,
+      "q99": 0.5115697304900252
+    },
+    "original_glcm_Idmn": {
+      "median": 0.9775336163984646,
+      "minimum": 0.938037408839084,
+      "maximum": 0.9977591714403404,
+      "q01": 0.9459161796135092,
+      "q99": 0.9968600884018323
+    },
+    "original_glcm_Idn": {
+      "median": 0.9056239196039211,
+      "minimum": 0.8523222651759268,
+      "maximum": 0.9745851960314404,
+      "q01": 0.8547507590201598,
+      "q99": 0.9706210246724266
+    },
+    "original_glcm_Imc1": {
+      "median": -0.1243960087753283,
+      "minimum": -0.2622385404999857,
+      "maximum": -0.0239874455363517,
+      "q01": -0.25889523752258287,
+      "q99": -0.035785151625097184
+    },
+    "original_glcm_Imc2": {
+      "median": 0.8300136508006848,
+      "minimum": 0.4294025600501646,
+      "maximum": 0.9713457591402694,
+      "q01": 0.5145305067045155,
+      "q99": 0.9545504412108999
+    },
+    "original_glcm_InverseVariance": {
+      "median": 0.19040904369132733,
+      "minimum": 0.1160248890097359,
+      "maximum": 0.4525963888041762,
+      "q01": 0.12207976185942983,
+      "q99": 0.44375077821482806
+    },
+    "original_glcm_JointAverage": {
+      "median": 31.087329412866477,
+      "minimum": 13.837131021782964,
+      "maximum": 42.119418330148726,
+      "q01": 15.778801928141753,
+      "q99": 42.04793148275826
+    },
+    "original_glcm_JointEnergy": {
+      "median": 0.0025287071280801,
+      "minimum": 0.0007948248876803,
+      "maximum": 0.0559146463306105,
+      "q01": 0.000796592799352648,
+      "q99": 0.051405561918345284
+    },
+    "original_glcm_JointEntropy": {
+      "median": 9.383362775267251,
+      "minimum": 5.342350544054332,
+      "maximum": 10.94431442394355,
+      "q01": 5.4753798778555085,
+      "q99": 10.810872662534964
+    },
+    "original_glcm_MCC": {
+      "median": 0.6891401299344708,
+      "minimum": 0.4172140660174807,
+      "maximum": 0.9387041386102007,
+      "q01": 0.45419009865329835,
+      "q99": 0.899880003710697
+    },
+    "original_glcm_MaximumProbability": {
+      "median": 0.0105981268042238,
+      "minimum": 0.0022019460979213,
+      "maximum": 0.1359403182623592,
+      "q01": 0.002696646860843718,
+      "q99": 0.12261864529385351
+    },
+    "original_glcm_SumAverage": {
+      "median": 62.174658825732976,
+      "minimum": 27.674262043565896,
+      "maximum": 84.2388366602975,
+      "q01": 31.55760385628353,
+      "q99": 84.09586296551653
+    },
+    "original_glcm_SumEntropy": {
+      "median": 5.979628511242047,
+      "minimum": 3.5343614387860063,
+      "maximum": 6.652199968385952,
+      "q01": 3.7289959708331466,
+      "q99": 6.630707004319815
+    },
+    "original_glcm_SumSquares": {
+      "median": 130.58673930463164,
+      "minimum": 10.160531939378057,
+      "maximum": 295.1425154718232,
+      "q01": 11.381168886868284,
+      "q99": 291.6545799278081
+    },
+    "original_gldm_DependenceEntropy": {
+      "median": 7.316814463158172,
+      "minimum": 6.346269857066482,
+      "maximum": 8.188352409636893,
+      "q01": 6.49563241740687,
+      "q99": 8.043438959883849
+    },
+    "original_gldm_DependenceNonUniformity": {
+      "median": 2242.1815264147194,
+      "minimum": 148.8968253968254,
+      "maximum": 76674.86711774788,
+      "q01": 187.24579435083237,
+      "q99": 47053.79028189427
+    },
+    "original_gldm_DependenceNonUniformityNormalized": {
+      "median": 0.22027983942197685,
+      "minimum": 0.0582201856480406,
+      "maximum": 0.3571382557391468,
+      "q01": 0.06633984854003232,
+      "q99": 0.35175559304601506
+    },
+    "original_gldm_DependenceVariance": {
+      "median": 3.0766006064740505,
+      "minimum": 0.9981740686700832,
+      "maximum": 32.71204811958645,
+      "q01": 1.0790183723725644,
+      "q99": 28.477277932361403
+    },
+    "original_gldm_GrayLevelNonUniformity": {
+      "median": 433.9517432924015,
+      "minimum": 23.695088044485633,
+      "maximum": 45936.58542157544,
+      "q01": 31.233930771227396,
+      "q99": 21050.931418843647
+    },
+    "original_gldm_GrayLevelVariance": {
+      "median": 141.82652736247633,
+      "minimum": 15.40877565096859,
+      "maximum": 307.0001191793736,
+      "q01": 16.035593623534393,
+      "q99": 292.39657667561266
+    },
+    "original_gldm_HighGrayLevelEmphasis": {
+      "median": 1025.1058687358686,
+      "minimum": 292.38587512794265,
+      "maximum": 1800.4731250997804,
+      "q01": 295.5899403173175,
+      "q99": 1784.851966620679
+    },
+    "original_gldm_LargeDependenceEmphasis": {
+      "median": 9.905839951441038,
+      "minimum": 4.398391420911528,
+      "maximum": 98.2667219549953,
+      "q01": 4.418249788612003,
+      "q99": 75.99322773777938
+    },
+    "original_gldm_LargeDependenceHighGrayLevelEmphasis": {
+      "median": 11848.790128431463,
+      "minimum": 1479.1995905834187,
+      "maximum": 157395.92428816276,
+      "q01": 2360.5460095842454,
+      "q99": 139123.9648465667
+    },
+    "original_gldm_LargeDependenceLowGrayLevelEmphasis": {
+      "median": 0.059109239600657254,
+      "minimum": 0.0056803066766224,
+      "maximum": 7.627281332514265,
+      "q01": 0.005806888098970049,
+      "q99": 7.2000012485986975
+    },
+    "original_gldm_LowGrayLevelEmphasis": {
+      "median": 0.00770978741637945,
+      "minimum": 0.0006277641939139,
+      "maximum": 0.1008276778440992,
+      "q01": 0.000736080170475956,
+      "q99": 0.09278316906533475
+    },
+    "original_gldm_SmallDependenceEmphasis": {
+      "median": 0.4134897851204596,
+      "minimum": 0.1106175657137167,
+      "maximum": 0.5981057248355011,
+      "q01": 0.1144082016971783,
+      "q99": 0.5817883497259336
+    },
+    "original_gldm_SmallDependenceHighGrayLevelEmphasis": {
+      "median": 349.08771690190224,
+      "minimum": 79.66209954242744,
+      "maximum": 690.4976148035062,
+      "q01": 115.7296759447195,
+      "q99": 678.5564590293505
+    },
+    "original_gldm_SmallDependenceLowGrayLevelEmphasis": {
+      "median": 0.00367696199024235,
+      "minimum": 0.0001192055479911,
+      "maximum": 0.020219397699025,
+      "q01": 0.000149753142581428,
+      "q99": 0.019631373491392393
+    },
+    "original_glrlm_GrayLevelNonUniformity": {
+      "median": 352.73523817168393,
+      "minimum": 22.65607392177727,
+      "maximum": 30130.733921390412,
+      "q01": 28.110621003007363,
+      "q99": 15433.951661860605
+    },
+    "original_glrlm_GrayLevelNonUniformityNormalized": {
+      "median": 0.031577335178361046,
+      "minimum": 0.0199976832478546,
+      "maximum": 0.1652756546870687,
+      "q01": 0.020799336501068154,
+      "q99": 0.1506577127300165
+    },
+    "original_glrlm_GrayLevelVariance": {
+      "median": 143.52328512869212,
+      "minimum": 19.34592247012511,
+      "maximum": 299.16029440479736,
+      "q01": 21.121048044536412,
+      "q99": 289.51319260111615
+    },
+    "original_glrlm_HighGrayLevelRunEmphasis": {
+      "median": 1016.136684462757,
+      "minimum": 299.8462264428232,
+      "maximum": 1794.0919708011554,
+      "q01": 301.03299917044876,
+      "q99": 1783.6634534023722
+    },
+    "original_glrlm_LongRunEmphasis": {
+      "median": 1.2198231586847443,
+      "minimum": 1.1028965630916512,
+      "maximum": 2.789757567244837,
+      "q01": 1.1032613041110964,
+      "q99": 2.380774394583134
+    },
+    "original_glrlm_LongRunHighGrayLevelEmphasis": {
+      "median": 1333.5605014259181,
+      "minimum": 334.1402880318871,
+      "maximum": 4366.448875593462,
+      "q01": 359.7852328483439,
+      "q99": 4251.145444531516
+    },
+    "original_glrlm_LongRunLowGrayLevelEmphasis": {
+      "median": 0.0099644779376174,
+      "minimum": 0.0010305459580552,
+      "maximum": 0.1796528816306516,
+      "q01": 0.0014188009331236849,
+      "q99": 0.15572790719126434
+    },
+    "original_glrlm_LowGrayLevelRunEmphasis": {
+      "median": 0.0076067811567103495,
+      "minimum": 0.0006540886837299,
+      "maximum": 0.0827587062499602,
+      "q01": 0.000779579314434635,
+      "q99": 0.08064259126332608
+    },
+    "original_glrlm_RunEntropy": {
+      "median": 5.554565231899337,
+      "minimum": 4.227605011188305,
+      "maximum": 6.037161267939656,
+      "q01": 4.4015600035721905,
+      "q99": 5.999007460338177
+    },
+    "original_glrlm_RunLengthNonUniformity": {
+      "median": 8630.559984604803,
+      "minimum": 602.0114026914606,
+      "maximum": 296063.9238780599,
+      "q01": 808.7308959692217,
+      "q99": 189276.71088450824
+    },
+    "original_glrlm_RunLengthNonUniformityNormalized": {
+      "median": 0.8850276914300761,
+      "minimum": 0.5782151787251838,
+      "maximum": 0.9396121074995514,
+      "q01": 0.6242758172877069,
+      "q99": 0.9381367229203891
+    },
+    "original_glrlm_RunPercentage": {
+      "median": 0.9373323315723794,
+      "minimum": 0.7078113902462883,
+      "maximum": 0.9682378179589336,
+      "q01": 0.7480663317081214,
+      "q99": 0.9677693292006168
+    },
+    "original_glrlm_RunVariance": {
+      "median": 0.07885129245546524,
+      "minimum": 0.034992495385555,
+      "maximum": 0.7695903529851423,
+      "q01": 0.035327348698438885,
+      "q99": 0.6206510229831598
+    },
+    "original_glrlm_ShortRunEmphasis": {
+      "median": 0.9533869365359668,
+      "minimum": 0.7879784256872091,
+      "maximum": 0.9762019474348016,
+      "q01": 0.8177285553553262,
+      "q99": 0.9758309143885563
+    },
+    "original_glrlm_ShortRunHighGrayLevelEmphasis": {
+      "median": 942.5790573347801,
+      "minimum": 287.6134538426036,
+      "maximum": 1702.3294027709462,
+      "q01": 288.54049743182645,
+      "q99": 1697.5113457534876
+    },
+    "original_glrlm_ShortRunLowGrayLevelEmphasis": {
+      "median": 0.00747310990103635,
+      "minimum": 0.0005530281864459,
+      "maximum": 0.0730880521780899,
+      "q01": 0.0006461952966247819,
+      "q99": 0.0657552397181301
+    },
+    "original_glszm_GrayLevelNonUniformity": {
+      "median": 110.88694893793401,
+      "minimum": 12.186046511627907,
+      "maximum": 3378.0322179782333,
+      "q01": 13.465007673238105,
+      "q99": 3138.6929106031566
+    },
+    "original_glszm_GrayLevelNonUniformityNormalized": {
+      "median": 0.0262446278760534,
+      "minimum": 0.0177394578160574,
+      "maximum": 0.0548870143718698,
+      "q01": 0.018383217473592967,
+      "q99": 0.050083788570022755
+    },
+    "original_glszm_GrayLevelVariance": {
+      "median": 135.36775153174375,
+      "minimum": 42.546797025541125,
+      "maximum": 279.637695009505,
+      "q01": 43.690060153267474,
+      "q99": 277.40554814832944
+    },
+    "original_glszm_HighGrayLevelZoneEmphasis": {
+      "median": 813.0456971734051,
+      "minimum": 317.6111111111111,
+      "maximum": 1743.8001393913246,
+      "q01": 329.22552518654373,
+      "q99": 1667.5305445492918
+    },
+    "original_glszm_LargeAreaEmphasis": {
+      "median": 82.34006815347297,
+      "minimum": 4.075770191507077,
+      "maximum": 362414.7948265369,
+      "q01": 4.159815433212996,
+      "q99": 173291.8971328542
+    },
+    "original_glszm_LargeAreaHighGrayLevelEmphasis": {
+      "median": 98255.6354074468,
+      "minimum": 1791.2126358695652,
+      "maximum": 642423760.9870968,
+      "q01": 3010.865930935554,
+      "q99": 318555349.4691908
+    },
+    "original_glszm_LargeAreaLowGrayLevelEmphasis": {
+      "median": 0.22767536037858416,
+      "minimum": 0.0081453784422082,
+      "maximum": 403.4140320252792,
+      "q01": 0.013925893585527064,
+      "q99": 201.41967357265975
+    },
+    "original_glszm_LowGrayLevelZoneEmphasis": {
+      "median": 0.0092403370374778,
+      "minimum": 0.0010387748446806,
+      "maximum": 0.0482681614913027,
+      "q01": 0.0011105181564283369,
+      "q99": 0.040287004867796836
+    },
+    "original_glszm_SizeZoneNonUniformity": {
+      "median": 2372.325403852441,
+      "minimum": 188.81976744186048,
+      "maximum": 72090.90560904144,
+      "q01": 253.77903789178234,
+      "q99": 40958.35976835721
+    },
+    "original_glszm_SizeZoneNonUniformityNormalized": {
+      "median": 0.5074728356216278,
+      "minimum": 0.3181854320007273,
+      "maximum": 0.6221609535016219,
+      "q01": 0.3305936101225818,
+      "q99": 0.6059354291929839
+    },
+    "original_glszm_SmallAreaEmphasis": {
+      "median": 0.740314944425492,
+      "minimum": 0.5822043281286609,
+      "maximum": 0.8159468598770713,
+      "q01": 0.5959764920074361,
+      "q99": 0.8059847377157249
+    },
+    "original_glszm_SmallAreaHighGrayLevelEmphasis": {
+      "median": 601.3255404584418,
+      "minimum": 206.8556924916476,
+      "maximum": 1209.676808437839,
+      "q01": 214.69766093091255,
+      "q99": 1173.0329277302542
+    },
+    "original_glszm_SmallAreaLowGrayLevelEmphasis": {
+      "median": 0.0069944991848946494,
+      "minimum": 0.0007067885274861,
+      "maximum": 0.029441532570241,
+      "q01": 0.000852560569881447,
+      "q99": 0.02458001237596273
+    },
+    "original_glszm_ZoneEntropy": {
+      "median": 6.90350673370143,
+      "minimum": 5.941924631759572,
+      "maximum": 7.430671009020959,
+      "q01": 6.014309302448444,
+      "q99": 7.417295511995068
+    },
+    "original_glszm_ZonePercentage": {
+      "median": 0.45833372339864187,
+      "minimum": 0.1126665560900094,
+      "maximum": 0.6672845227062094,
+      "q01": 0.11290966004740946,
+      "q99": 0.6616058874421883
+    },
+    "original_glszm_ZoneVariance": {
+      "median": 77.8646564092265,
+      "minimum": 1.6643568605401686,
+      "maximum": 362342.5696570263,
+      "q01": 1.8797327068819891,
+      "q99": 173213.24822810804
+    },
+    "original_ngtdm_Busyness": {
+      "median": 0.7914546383826734,
+      "minimum": 0.0536056243481409,
+      "maximum": 20.74329292795668,
+      "q01": 0.07067510485878098,
+      "q99": 7.88416025979756
+    },
+    "original_ngtdm_Coarseness": {
+      "median": 0.0007847514532702,
+      "minimum": 2.799349125472592e-05,
+      "maximum": 0.0103558026504921,
+      "q01": 2.8893749475391937e-05,
+      "q99": 0.006966088692978816
+    },
+    "original_ngtdm_Complexity": {
+      "median": 6126.516151689051,
+      "minimum": 1098.5230346854642,
+      "maximum": 69487.29152708672,
+      "q01": 1296.8090494059975,
+      "q99": 32922.65414544441
+    },
+    "original_ngtdm_Contrast": {
+      "median": 0.3838906298953609,
+      "minimum": 0.0161243762784647,
+      "maximum": 1.0052353294329373,
+      "q01": 0.016871895129097283,
+      "q99": 0.927800850902477
+    },
+    "original_ngtdm_Strength": {
+      "median": 1.1299784132814383,
+      "minimum": 0.0686227805548387,
+      "maximum": 9.342131303175986,
+      "q01": 0.10876814097675092,
+      "q99": 9.02637687851265
+    }
+  },
+  "method": "1st\u201399th percentile reference ranges from fitted training patients only",
+  "review_fraction_threshold": 0.1,
+  "limitation": "Heuristic input review. No calibrated uncertainty, site-drift guarantee or clinical acceptance threshold."
+}

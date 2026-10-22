@@ -1,0 +1,187 @@
+{
+  "dataset_path": "data/radiogenomics_clinical_subtype.csv",
+  "dataset_sha256": "41bdfa70e4d1e7ef43b6f2e084968e0a8892d36253d6927baaa3072ae91f07ef",
+  "split_sha256": "78a214c74dc09fc74fd9fb4fb93ea73931d5211b379fb1eb4cfbd1b8630c535d",
+  "seed": 42,
+  "development_patients": 104,
+  "test_patients": 35,
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "thresholds": [
+    0.35,
+    0.45,
+    0.5,
+    0.55,
+    0.65,
+    0.75,
+    0.85
+  ],
+  "selection_metric": "nested CV accuracy; balanced accuracy then AUC break ties",
+  "target_accuracy": 0.83,
+  "clinical_features": [
+    "clinical_age_at_diagnosis",
+    "clinical_male",
+    "clinical_pack_years",
+    "clinical_smoking_never",
+    "clinical_smoking_former",
+    "clinical_smoking_current"
+  ],
+  "previously_inspected_holdout": true,
+  "test_patient_ids_excluded_from_selection": [
+    "R01-002",
+    "R01-003",
+    "R01-004",
+    "R01-018",
+    "R01-021",
+    "R01-028",
+    "R01-030",
+    "R01-033",
+    "R01-039",
+    "R01-041",
+    "R01-042",
+    "R01-044",
+    "R01-048",
+    "R01-054",
+    "R01-075",
+    "R01-076",
+    "R01-083",
+    "R01-084",
+    "R01-087",
+    "R01-097",
+    "R01-100",
+    "R01-103",
+    "R01-111",
+    "R01-114",
+    "R01-116",
+    "R01-117",
+    "R01-124",
+    "R01-126",
+    "R01-131",
+    "R01-133",
+    "R01-137",
+    "R01-138",
+    "R01-141",
+    "R01-144",
+    "R01-146"
+  ],
+  "candidates": {
+    "baseline_rich_logistic": {
+      "estimator": "Pipeline(memory=Memory(location=artifacts/radiogenomics_refinement/training_cache),\n         steps=[('impute',\n                 SimpleImputer(keep_empty_features=True, strategy='median')),\n                ('prune', CorrelationPruner()),\n                ('scale',\n                 QuantileTransformer(n_quantiles=30,\n                                     output_distribution='normal',\n                                     random_state=42)),\n                ('select', SelectKBest(k='all')),\n                ('model', LogisticRegression(max_iter=4000, random_state=42))])",
+      "grid": {
+        "select__k": [
+          10,
+          40,
+          100
+        ],
+        "model__C": [
+          0.01,
+          0.1,
+          1
+        ]
+      },
+      "view": "rich",
+      "tune_threshold": true
+    },
+    "sigmoid_rich_logistic": {
+      "estimator": "CalibratedClassifierCV(cv=StratifiedKFold(n_splits=3, random_state=42, shuffle=True),\n                       ensemble=True,\n                       estimator=Pipeline(memory=Memory(location=artifacts/radiogenomics_refinement/training_cache),\n                                          steps=[('impute',\n                                                  SimpleImputer(keep_empty_features=True,\n                                                                strategy='median')),\n                                                 ('prune', CorrelationPruner()),\n                                                 ('scale',\n                                                  QuantileTransformer(n_quantiles=30,\n                                                                      output_distribution='normal',\n                                                                      random_state=42)),\n                                                 ('select',\n                                                  SelectKBest(k='all')),\n                                                 ('model',\n                                                  LogisticRegression(max_iter=4000,\n                                                                     random_state=42))]),\n                       n_jobs=1)",
+      "grid": {
+        "estimator__select__k": [
+          40,
+          100
+        ],
+        "estimator__model__C": [
+          0.03,
+          0.1,
+          0.3
+        ]
+      },
+      "view": "rich",
+      "tune_threshold": true
+    },
+    "bagged_rich_logistic": {
+      "estimator": "BaggingClassifier(estimator=Pipeline(memory=Memory(location=artifacts/radiogenomics_refinement/training_cache),\n                                     steps=[('impute',\n                                             SimpleImputer(keep_empty_features=True,\n                                                           strategy='median')),\n                                            ('prune', CorrelationPruner()),\n                                            ('scale',\n                                             QuantileTransformer(n_quantiles=30,\n                                                                 output_distribution='normal',\n                                                                 random_state=42)),\n                                            ('select', SelectKBest(k='all')),\n                                            ('model',\n                                             LogisticRegression(max_iter=4000,\n                                                                random_state=42))]),\n                  max_samples=0.8, n_estimators=12, n_jobs=1, random_state=42)",
+      "grid": {
+        "estimator__select__k": [
+          40,
+          100
+        ],
+        "estimator__model__C": [
+          0.03,
+          0.1,
+          0.3
+        ]
+      },
+      "view": "rich",
+      "tune_threshold": true
+    },
+    "elastic_net_radiomics": {
+      "estimator": "Pipeline(memory=Memory(location=artifacts/radiogenomics_refinement/training_cache),\n         steps=[('impute',\n                 SimpleImputer(keep_empty_features=True, strategy='median')),\n                ('prune', CorrelationPruner()),\n                ('scale',\n                 QuantileTransformer(n_quantiles=30,\n                                     output_distribution='normal',\n                                     random_state=42)),\n                ('select', SelectKBest(k='all')),\n                ('model',\n                 LogisticRegression(C=0.1, l1_ratio=0.5, max_iter=15000,\n                                    penalty='elasticnet', random_state=42,\n                                    solver='saga', tol=0.001))])",
+      "grid": {
+        "model__C": [
+          0.03,
+          0.1,
+          0.3
+        ],
+        "model__l1_ratio": [
+          0.1,
+          0.5,
+          0.9
+        ]
+      },
+      "view": "rich",
+      "tune_threshold": true
+    },
+    "pca_radiomics_logistic": {
+      "estimator": "Pipeline(memory=Memory(location=artifacts/radiogenomics_refinement/training_cache),\n         steps=[('impute',\n                 SimpleImputer(keep_empty_features=True, strategy='median')),\n                ('prune', CorrelationPruner()),\n                ('scale',\n                 QuantileTransformer(n_quantiles=30,\n                                     output_distribution='normal',\n                                     random_state=42)),\n                ('pca', PCA(n_components=10, svd_solver='full', whiten=True)),\n                ('model', LogisticRegression(max_iter=4000, random_state=42))])",
+      "grid": {
+        "pca__n_components": [
+          5,
+          15,
+          30
+        ],
+        "model__C": [
+          0.03,
+          0.1,
+          0.3,
+          1
+        ]
+      },
+      "view": "rich",
+      "tune_threshold": true
+    },
+    "pca_radiomics_svm": {
+      "estimator": "Pipeline(memory=Memory(location=artifacts/radiogenomics_refinement/training_cache),\n         steps=[('impute',\n                 SimpleImputer(keep_empty_features=True, strategy='median')),\n                ('prune', CorrelationPruner()),\n                ('scale',\n                 QuantileTransformer(n_quantiles=30,\n                                     output_distribution='normal',\n                                     random_state=42)),\n                ('pca', PCA(n_components=10, svd_solver='full', whiten=True)),\n                ('model', SVC(probability=True, random_state=42))])",
+      "grid": {
+        "pca__n_components": [
+          5,
+          15,
+          30
+        ],
+        "model__C": [
+          0.3,
+          3,
+          30
+        ],
+        "model__gamma": [
+          "scale",
+          0.03
+        ]
+      },
+      "view": "rich",
+      "tune_threshold": true
+    },
+    "stacked_radiomics": {
+      "estimator": "StackingClassifier(cv=StratifiedKFold(n_splits=3, random_state=42, shuffle=True),\n                   estimators=[('logistic',\n                                Pipeline(memory=Memory(location=artifacts/radiogenomics_refinement/training_cache),\n                                         steps=[('impute',\n                                                 SimpleImputer(keep_empty_features=True,\n                                                               strategy='median')),\n                                                ('prune', CorrelationPruner()),\n                                                ('scale',\n                                                 QuantileTransformer(n_quantiles=30,\n                                                                     output_distrib...\n                                                                                  <function original_columns at 0x10a5c6980>)])),\n                                                ('impute',\n                                                 SimpleImputer(keep_empty_features=True,\n                                                               strategy='median')),\n                                                ('model',\n                                                 ExtraTreesClassifier(max_features=0.7,\n                                                                      min_samples_leaf=5,\n                                                                      n_estimators=300,\n                                                                      n_jobs=2,\n                                                                      random_state=42))]))],\n                   final_estimator=Pipeline(steps=[('scale', StandardScaler()),\n                                                   ('model',\n                                                    LogisticRegression(max_iter=4000,\n                                                                       random_state=42))]),\n                   n_jobs=1, stack_method='predict_proba')",
+      "grid": {
+        "final_estimator__model__C": [
+          0.03,
+          0.1,
+          0.3,
+          1
+        ]
+      },
+      "view": "rich",
+      "tune_threshold": true
+    }
+  }
+}

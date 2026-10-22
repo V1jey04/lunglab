@@ -1,0 +1,667 @@
+{
+  "dataset_path": "data/radiogenomics_expanded_clinical.csv",
+  "dataset_sha256": "b9e8b8c4006ccd736fd8dfd34585ca060d7873013a78c1fefd00c2117baf056e",
+  "split_sha256": "fda761f19beaa589784d68b16078638f77a9353cd97ac44e24ffb9c55360409c",
+  "seed": 42,
+  "development_patients": 172,
+  "test_patients": 35,
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "thresholds": [
+    0.35,
+    0.45,
+    0.5,
+    0.55,
+    0.65,
+    0.75,
+    0.85
+  ],
+  "selection_metric": "nested CV accuracy; balanced accuracy then AUC break ties",
+  "target_accuracy": 0.83,
+  "clinical_features": [
+    "clinical_age_at_diagnosis",
+    "clinical_male",
+    "clinical_pack_years",
+    "clinical_smoking_never",
+    "clinical_smoking_former",
+    "clinical_smoking_current"
+  ],
+  "previously_inspected_holdout": true,
+  "test_patient_ids_excluded_from_selection": [
+    "R01-002",
+    "R01-003",
+    "R01-004",
+    "R01-018",
+    "R01-021",
+    "R01-028",
+    "R01-030",
+    "R01-033",
+    "R01-039",
+    "R01-041",
+    "R01-042",
+    "R01-044",
+    "R01-048",
+    "R01-054",
+    "R01-075",
+    "R01-076",
+    "R01-083",
+    "R01-084",
+    "R01-087",
+    "R01-097",
+    "R01-100",
+    "R01-103",
+    "R01-111",
+    "R01-114",
+    "R01-116",
+    "R01-117",
+    "R01-124",
+    "R01-126",
+    "R01-131",
+    "R01-133",
+    "R01-137",
+    "R01-138",
+    "R01-141",
+    "R01-144",
+    "R01-146"
+  ],
+  "candidates": {
+    "expanded_clinical_accuracy_logistic": {
+      "estimator": "Pipeline(steps=[('impute',\n                 SimpleImputer(keep_empty_features=True, strategy='median')),\n                ('scale', StandardScaler()), ('select', SelectKBest(k='all')),\n                ('model', LogisticRegression(max_iter=4000, random_state=42))])",
+      "grid": {
+        "model__C": [
+          0.01,
+          0.1,
+          1,
+          10
+        ]
+      },
+      "view": "clinical",
+      "tune_threshold": true
+    },
+    "expanded_clinical_accuracy_catboost": {
+      "estimator": "Pipeline(steps=[('impute',\n                 SimpleImputer(keep_empty_features=True, strategy='median')),\n                ('scale', StandardScaler()), ('select', SelectKBest(k='all')),\n                ('model',\n                 CatBoostClassifier(allow_writing_files=False, iterations=300, learning_rate=0.05, loss_function='Logloss', random_seed=42, thread_count=2, verbose=False))])",
+      "grid": {
+        "model__depth": [
+          2,
+          3,
+          4
+        ],
+        "model__l2_leaf_reg": [
+          3,
+          20
+        ]
+      },
+      "view": "clinical",
+      "tune_threshold": true
+    },
+    "expanded_clinical_hist_boosting": {
+      "estimator": "Pipeline(steps=[('impute',\n                 SimpleImputer(keep_empty_features=True, strategy='median')),\n                ('scale', StandardScaler()),\n                ('model',\n                 HistGradientBoostingClassifier(learning_rate=0.05,\n                                                max_iter=200,\n                                                random_state=42))])",
+      "grid": {
+        "model__max_leaf_nodes": [
+          3,
+          7
+        ],
+        "model__min_samples_leaf": [
+          5,
+          10
+        ],
+        "model__l2_regularization": [
+          3,
+          20
+        ]
+      },
+      "view": "clinical",
+      "tune_threshold": true
+    },
+    "expanded_clinical_extra_trees": {
+      "estimator": "Pipeline(steps=[('impute',\n                 SimpleImputer(keep_empty_features=True, strategy='median')),\n                ('scale', StandardScaler()),\n                ('model',\n                 ExtraTreesClassifier(n_estimators=300, n_jobs=2,\n                                      random_state=42))])",
+      "grid": {
+        "model__min_samples_leaf": [
+          5,
+          10
+        ],
+        "model__max_features": [
+          0.7,
+          1.0
+        ]
+      },
+      "view": "clinical",
+      "tune_threshold": true
+    },
+    "expanded_clinical_voting": {
+      "estimator": "Pipeline(steps=[('impute',\n                 SimpleImputer(keep_empty_features=True, strategy='median')),\n                ('scale', StandardScaler()),\n                ('model',\n                 VotingClassifier(estimators=[('logistic',\n                                               LogisticRegression(C=0.1,\n                                                                  max_iter=4000,\n                                                                  random_state=42)),\n                                              ('boosting',\n                                               CatBoostClassifier(allow_writing_files=False, depth=2, iterations=300, l2_leaf_reg=20, learning_rate=0.05, loss_function='Logloss', random_seed=42, thread_count=2, verbose=False))],\n                                  voting='soft'))])",
+      "grid": {
+        "model__weights": [
+          [
+            2,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            2
+          ]
+        ]
+      },
+      "view": "clinical",
+      "tune_threshold": true
+    }
+  },
+  "models": {
+    "expanded_clinical_accuracy_logistic": {
+      "nested_cv_accuracy": 0.8255813953488372,
+      "nested_cv_balanced_accuracy": 0.4930555555555556,
+      "nested_cv_auc": 0.6750992063492064,
+      "nested_cv_metrics": {
+        "accuracy": 0.8255813953488372,
+        "balanced_accuracy": 0.4930555555555556,
+        "sensitivity": 0.0,
+        "specificity": 0.9861111111111112,
+        "precision": 0.0,
+        "f1": 0.0,
+        "roc_auc": 0.6750992063492064,
+        "average_precision": 0.26063038827260193,
+        "brier_score": 0.13277803174973826,
+        "confusion_matrix": [
+          [
+            142,
+            2
+          ],
+          [
+            28,
+            0
+          ]
+        ]
+      },
+      "fold_selections": [
+        {
+          "parameters": {
+            "model__C": 10
+          },
+          "threshold": 0.45,
+          "prediction_rule": "probability_threshold",
+          "inner_accuracy": 0.8394160583941606,
+          "inner_balanced_accuracy": 0.5367588932806324,
+          "inner_auc": 0.6735177865612648
+        },
+        {
+          "parameters": {
+            "model__C": 0.1
+          },
+          "threshold": 0.45,
+          "prediction_rule": "probability_threshold",
+          "inner_accuracy": 0.8467153284671532,
+          "inner_balanced_accuracy": 0.5227272727272727,
+          "inner_auc": 0.7584980237154151
+        },
+        {
+          "parameters": {
+            "model__C": 0.01
+          },
+          "threshold": 0.5,
+          "prediction_rule": "probability_threshold",
+          "inner_accuracy": 0.8333333333333334,
+          "inner_balanced_accuracy": 0.5,
+          "inner_auc": 0.5877126654064272
+        },
+        {
+          "parameters": {
+            "model__C": 0.1
+          },
+          "threshold": 0.5,
+          "prediction_rule": "probability_threshold",
+          "inner_accuracy": 0.8333333333333334,
+          "inner_balanced_accuracy": 0.5,
+          "inner_auc": 0.6015122873345936
+        },
+        {
+          "parameters": {
+            "model__C": 0.1
+          },
+          "threshold": 0.65,
+          "prediction_rule": "probability_threshold",
+          "inner_accuracy": 0.8405797101449275,
+          "inner_balanced_accuracy": 0.5,
+          "inner_auc": 0.7259012539184952
+        }
+      ],
+      "input_view": "clinical",
+      "input_features": 6,
+      "feature_names": [
+        "clinical_age_at_diagnosis",
+        "clinical_male",
+        "clinical_pack_years",
+        "clinical_smoking_never",
+        "clinical_smoking_former",
+        "clinical_smoking_current"
+      ],
+      "frozen_parameters": {
+        "model__C": 1
+      },
+      "threshold": 0.65,
+      "prediction_rule": "probability_threshold"
+    },
+    "expanded_clinical_accuracy_catboost": {
+      "nested_cv_accuracy": 0.8313953488372093,
+      "nested_cv_balanced_accuracy": 0.4965277777777778,
+      "nested_cv_auc": 0.628968253968254,
+      "nested_cv_metrics": {
+        "accuracy": 0.8313953488372093,
+        "balanced_accuracy": 0.4965277777777778,
+        "sensitivity": 0.0,
+        "specificity": 0.9930555555555556,
+        "precision": 0.0,
+        "f1": 0.0,
+        "roc_auc": 0.628968253968254,
+        "average_precision": 0.20960233103155135,
+        "brier_score": 0.15471892359932224,
+        "confusion_matrix": [
+          [
+            143,
+            1
+          ],
+          [
+            28,
+            0
+          ]
+        ]
+      },
+      "fold_selections": [
+        {
+          "parameters": {
+            "model__depth": 2,
+            "model__l2_leaf_reg": 20
+          },
+          "threshold": 0.75,
+          "prediction_rule": "probability_threshold",
+          "inner_accuracy": 0.8394160583941606,
+          "inner_balanced_accuracy": 0.5,
+          "inner_auc": 0.6351778656126482
+        },
+        {
+          "parameters": {
+            "model__depth": 2,
+            "model__l2_leaf_reg": 20
+          },
+          "threshold": 0.55,
+          "prediction_rule": "probability_threshold",
+          "inner_accuracy": 0.8394160583941606,
+          "inner_balanced_accuracy": 0.5367588932806324,
+          "inner_auc": 0.6774703557312253
+        },
+        {
+          "parameters": {
+            "model__depth": 2,
+            "model__l2_leaf_reg": 20
+          },
+          "threshold": 0.85,
+          "prediction_rule": "probability_threshold",
+          "inner_accuracy": 0.8333333333333334,
+          "inner_balanced_accuracy": 0.5,
+          "inner_auc": 0.5565217391304348
+        },
+        {
+          "parameters": {
+            "model__depth": 4,
+            "model__l2_leaf_reg": 20
+          },
+          "threshold": 0.85,
+          "prediction_rule": "probability_threshold",
+          "inner_accuracy": 0.8333333333333334,
+          "inner_balanced_accuracy": 0.5,
+          "inner_auc": 0.5398865784499054
+        },
+        {
+          "parameters": {
+            "model__depth": 2,
+            "model__l2_leaf_reg": 20
+          },
+          "threshold": 0.85,
+          "prediction_rule": "probability_threshold",
+          "inner_accuracy": 0.8405797101449275,
+          "inner_balanced_accuracy": 0.5,
+          "inner_auc": 0.6898510971786833
+        }
+      ],
+      "input_view": "clinical",
+      "input_features": 6,
+      "feature_names": [
+        "clinical_age_at_diagnosis",
+        "clinical_male",
+        "clinical_pack_years",
+        "clinical_smoking_never",
+        "clinical_smoking_former",
+        "clinical_smoking_current"
+      ],
+      "frozen_parameters": {
+        "model__depth": 2,
+        "model__l2_leaf_reg": 20
+      },
+      "threshold": 0.85,
+      "prediction_rule": "probability_threshold"
+    },
+    "expanded_clinical_hist_boosting": {
+      "nested_cv_accuracy": 0.8372093023255814,
+      "nested_cv_balanced_accuracy": 0.5,
+      "nested_cv_auc": 0.6691468253968254,
+      "nested_cv_metrics": {
+        "accuracy": 0.8372093023255814,
+        "balanced_accuracy": 0.5,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1": 0.0,
+        "roc_auc": 0.6691468253968254,
+        "average_precision": 0.2624305505929309,
+        "brier_score": 0.13111687069016006,
+        "confusion_matrix": [
+          [
+            144,
+            0
+          ],
+          [
+            28,
+            0
+          ]
+        ]
+      },
+      "fold_selections": [
+        {
+          "parameters": {
+            "model__l2_regularization": 3,
+            "model__max_leaf_nodes": 3,
+            "model__min_samples_leaf": 10
+          },
+          "threshold": 0.5,
+          "prediction_rule": "probability_threshold",
+          "inner_accuracy": 0.8394160583941606,
+          "inner_balanced_accuracy": 0.5551383399209486,
+          "inner_auc": 0.6197628458498025
+        },
+        {
+          "parameters": {
+            "model__l2_regularization": 3,
+            "model__max_leaf_nodes": 3,
+            "model__min_samples_leaf": 5
+          },
+          "threshold": 0.65,
+          "prediction_rule": "probability_threshold",
+          "inner_accuracy": 0.8394160583941606,
+          "inner_balanced_accuracy": 0.5,
+          "inner_auc": 0.6984189723320158
+        },
+        {
+          "parameters": {
+            "model__l2_regularization": 20,
+            "model__max_leaf_nodes": 3,
+            "model__min_samples_leaf": 5
+          },
+          "threshold": 0.5,
+          "prediction_rule": "probability_threshold",
+          "inner_accuracy": 0.8333333333333334,
+          "inner_balanced_accuracy": 0.5,
+          "inner_auc": 0.5646502835538751
+        },
+        {
+          "parameters": {
+            "model__l2_regularization": 20,
+            "model__max_leaf_nodes": 3,
+            "model__min_samples_leaf": 10
+          },
+          "threshold": 0.5,
+          "prediction_rule": "probability_threshold",
+          "inner_accuracy": 0.8333333333333334,
+          "inner_balanced_accuracy": 0.5,
+          "inner_auc": 0.5829867674858222
+        },
+        {
+          "parameters": {
+            "model__l2_regularization": 20,
+            "model__max_leaf_nodes": 3,
+            "model__min_samples_leaf": 5
+          },
+          "threshold": 0.45,
+          "prediction_rule": "probability_threshold",
+          "inner_accuracy": 0.8405797101449275,
+          "inner_balanced_accuracy": 0.5184169278996865,
+          "inner_auc": 0.6931818181818182
+        }
+      ],
+      "input_view": "clinical",
+      "input_features": 6,
+      "feature_names": [
+        "clinical_age_at_diagnosis",
+        "clinical_male",
+        "clinical_pack_years",
+        "clinical_smoking_never",
+        "clinical_smoking_former",
+        "clinical_smoking_current"
+      ],
+      "frozen_parameters": {
+        "model__l2_regularization": 20,
+        "model__max_leaf_nodes": 3,
+        "model__min_samples_leaf": 10
+      },
+      "threshold": 0.5,
+      "prediction_rule": "probability_threshold"
+    },
+    "expanded_clinical_extra_trees": {
+      "nested_cv_accuracy": 0.8372093023255814,
+      "nested_cv_balanced_accuracy": 0.5,
+      "nested_cv_auc": 0.6551339285714284,
+      "nested_cv_metrics": {
+        "accuracy": 0.8372093023255814,
+        "balanced_accuracy": 0.5,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1": 0.0,
+        "roc_auc": 0.6551339285714284,
+        "average_precision": 0.233626012436041,
+        "brier_score": 0.13430755726536583,
+        "confusion_matrix": [
+          [
+            144,
+            0
+          ],
+          [
+            28,
+            0
+          ]
+        ]
+      },
+      "fold_selections": [
+        {
+          "parameters": {
+            "model__max_features": 0.7,
+            "model__min_samples_leaf": 10
+          },
+          "threshold": 0.5,
+          "prediction_rule": "probability_threshold",
+          "inner_accuracy": 0.8394160583941606,
+          "inner_balanced_accuracy": 0.5,
+          "inner_auc": 0.675098814229249
+        },
+        {
+          "parameters": {
+            "model__max_features": 1.0,
+            "model__min_samples_leaf": 10
+          },
+          "threshold": 0.35,
+          "prediction_rule": "probability_threshold",
+          "inner_accuracy": 0.8467153284671532,
+          "inner_balanced_accuracy": 0.5227272727272727,
+          "inner_auc": 0.7304347826086957
+        },
+        {
+          "parameters": {
+            "model__max_features": 0.7,
+            "model__min_samples_leaf": 10
+          },
+          "threshold": 0.5,
+          "prediction_rule": "probability_threshold",
+          "inner_accuracy": 0.8333333333333334,
+          "inner_balanced_accuracy": 0.5,
+          "inner_auc": 0.5546313799621928
+        },
+        {
+          "parameters": {
+            "model__max_features": 1.0,
+            "model__min_samples_leaf": 10
+          },
+          "threshold": 0.5,
+          "prediction_rule": "probability_threshold",
+          "inner_accuracy": 0.8333333333333334,
+          "inner_balanced_accuracy": 0.5,
+          "inner_auc": 0.5947069943289223
+        },
+        {
+          "parameters": {
+            "model__max_features": 1.0,
+            "model__min_samples_leaf": 5
+          },
+          "threshold": 0.5,
+          "prediction_rule": "probability_threshold",
+          "inner_accuracy": 0.8405797101449275,
+          "inner_balanced_accuracy": 0.5,
+          "inner_auc": 0.7231583072100313
+        }
+      ],
+      "input_view": "clinical",
+      "input_features": 6,
+      "feature_names": [
+        "clinical_age_at_diagnosis",
+        "clinical_male",
+        "clinical_pack_years",
+        "clinical_smoking_never",
+        "clinical_smoking_former",
+        "clinical_smoking_current"
+      ],
+      "frozen_parameters": {
+        "model__max_features": 1.0,
+        "model__min_samples_leaf": 10
+      },
+      "threshold": 0.5,
+      "prediction_rule": "probability_threshold"
+    },
+    "expanded_clinical_voting": {
+      "nested_cv_accuracy": 0.8372093023255814,
+      "nested_cv_balanced_accuracy": 0.5,
+      "nested_cv_auc": 0.6716269841269841,
+      "nested_cv_metrics": {
+        "accuracy": 0.8372093023255814,
+        "balanced_accuracy": 0.5,
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "f1": 0.0,
+        "roc_auc": 0.6716269841269841,
+        "average_precision": 0.23402000616279703,
+        "brier_score": 0.13397223296942812,
+        "confusion_matrix": [
+          [
+            144,
+            0
+          ],
+          [
+            28,
+            0
+          ]
+        ]
+      },
+      "fold_selections": [
+        {
+          "parameters": {
+            "model__weights": [
+              2,
+              1
+            ]
+          },
+          "threshold": 0.5,
+          "prediction_rule": "probability_threshold",
+          "inner_accuracy": 0.8394160583941606,
+          "inner_balanced_accuracy": 0.5,
+          "inner_auc": 0.6857707509881423
+        },
+        {
+          "parameters": {
+            "model__weights": [
+              2,
+              1
+            ]
+          },
+          "threshold": 0.5,
+          "prediction_rule": "probability_threshold",
+          "inner_accuracy": 0.8394160583941606,
+          "inner_balanced_accuracy": 0.5,
+          "inner_auc": 0.7462450592885376
+        },
+        {
+          "parameters": {
+            "model__weights": [
+              1,
+              1
+            ]
+          },
+          "threshold": 0.55,
+          "prediction_rule": "probability_threshold",
+          "inner_accuracy": 0.8333333333333334,
+          "inner_balanced_accuracy": 0.5,
+          "inner_auc": 0.5706994328922496
+        },
+        {
+          "parameters": {
+            "model__weights": [
+              2,
+              1
+            ]
+          },
+          "threshold": 0.5,
+          "prediction_rule": "probability_threshold",
+          "inner_accuracy": 0.8333333333333334,
+          "inner_balanced_accuracy": 0.5,
+          "inner_auc": 0.5879017013232514
+        },
+        {
+          "parameters": {
+            "model__weights": [
+              2,
+              1
+            ]
+          },
+          "threshold": 0.65,
+          "prediction_rule": "probability_threshold",
+          "inner_accuracy": 0.8405797101449275,
+          "inner_balanced_accuracy": 0.5,
+          "inner_auc": 0.7407915360501568
+        }
+      ],
+      "input_view": "clinical",
+      "input_features": 6,
+      "feature_names": [
+        "clinical_age_at_diagnosis",
+        "clinical_male",
+        "clinical_pack_years",
+        "clinical_smoking_never",
+        "clinical_smoking_former",
+        "clinical_smoking_current"
+      ],
+      "frozen_parameters": {
+        "model__weights": [
+          2,
+          1
+        ]
+      },
+      "threshold": 0.5,
+      "prediction_rule": "probability_threshold"
+    }
+  },
+  "feature_mode": "clinical",
+  "test_evaluated": false,
+  "development_majority_accuracy": 0.8372093023255814,
+  "selected_model_by_development": "expanded_clinical_voting",
+  "development_target_met": false
+}

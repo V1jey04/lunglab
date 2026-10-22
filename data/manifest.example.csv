@@ -1,0 +1,3 @@
+patient_id,sample_id,label,image_path,mask_path,mask_label
+CASE-001,CASE-001-GTV1,adenocarcinoma,raw/CASE-001/ct.nii.gz,raw/CASE-001/tumour.nii.gz,1
+CASE-002,CASE-002-GTV1,squamous_cell_carcinoma,raw/CASE-002/ct.nii.gz,raw/CASE-002/tumour.nii.gz,1

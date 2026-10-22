@@ -1,0 +1,218 @@
+{
+  "evaluation": "5-fold stratified patient CV on development patients only",
+  "seed": 42,
+  "checkpoint_url": "https://huggingface.co/jingang/TabICL/resolve/4dcd344ece2c00be9e831fdd35bed57b5ad83e19/tabicl-classifier-v2-20260212.ckpt",
+  "checkpoint_sha256": "bdc7dbd5e4ff21f8f0456fcf90c6b7cdf72dbea960f2d05b19bec19f9b3d4ed0",
+  "fixed_parameters": {
+    "n_estimators": 8,
+    "features_maximum": 50,
+    "correlation_threshold": 0.95,
+    "threshold": 0.5
+  },
+  "models": {
+    "lung1_original": {
+      "metrics": {
+        "accuracy": 0.7142857142857143,
+        "balanced_accuracy": 0.4871951219512195,
+        "sensitivity": 0.95,
+        "specificity": 0.024390243902439025,
+        "precision": 0.7402597402597403,
+        "f1": 0.8321167883211679,
+        "roc_auc": 0.5158536585365854,
+        "average_precision": 0.7464038377774169,
+        "brier_score": 0.2060030276126486,
+        "confusion_matrix": [
+          [
+            1,
+            40
+          ],
+          [
+            6,
+            114
+          ]
+        ]
+      },
+      "patients": 161,
+      "majority_baseline_accuracy": 0.7453416149068323,
+      "input_features": 107,
+      "data": "data/nsclc_subtype.csv",
+      "dataset_sha256": "0914dc87c74864927a39d3d50a9749d001d2c785c30337260f98a4af9c9f02be",
+      "excluded_previously_inspected_test_ids": [
+        "LUNG1-004",
+        "LUNG1-006",
+        "LUNG1-011",
+        "LUNG1-031",
+        "LUNG1-032",
+        "LUNG1-052",
+        "LUNG1-061",
+        "LUNG1-064",
+        "LUNG1-098",
+        "LUNG1-107",
+        "LUNG1-109",
+        "LUNG1-121",
+        "LUNG1-131",
+        "LUNG1-146",
+        "LUNG1-151",
+        "LUNG1-167",
+        "LUNG1-173",
+        "LUNG1-197",
+        "LUNG1-203",
+        "LUNG1-230",
+        "LUNG1-285",
+        "LUNG1-292",
+        "LUNG1-295",
+        "LUNG1-296",
+        "LUNG1-302",
+        "LUNG1-312",
+        "LUNG1-334",
+        "LUNG1-339",
+        "LUNG1-356",
+        "LUNG1-359",
+        "LUNG1-362",
+        "LUNG1-364",
+        "LUNG1-373",
+        "LUNG1-389",
+        "LUNG1-390",
+        "LUNG1-393",
+        "LUNG1-397",
+        "LUNG1-401",
+        "LUNG1-416",
+        "LUNG1-418",
+        "LUNG1-421"
+      ]
+    },
+    "radiogenomics_original": {
+      "metrics": {
+        "accuracy": 0.7692307692307693,
+        "balanced_accuracy": 0.5352839931153184,
+        "sensitivity": 0.14285714285714285,
+        "specificity": 0.927710843373494,
+        "precision": 0.3333333333333333,
+        "f1": 0.2,
+        "roc_auc": 0.6706827309236948,
+        "average_precision": 0.3272633911220567,
+        "brier_score": 0.16491051697322062,
+        "confusion_matrix": [
+          [
+            77,
+            6
+          ],
+          [
+            18,
+            3
+          ]
+        ]
+      },
+      "patients": 104,
+      "majority_baseline_accuracy": 0.7980769230769231,
+      "input_features": 101,
+      "data": "data/radiogenomics_subtype.csv",
+      "dataset_sha256": "52f3a497836c5d02d348dbc561ede8e6bd9714411fc856b765d17be631221987",
+      "excluded_previously_inspected_test_ids": [
+        "R01-002",
+        "R01-003",
+        "R01-004",
+        "R01-018",
+        "R01-021",
+        "R01-028",
+        "R01-030",
+        "R01-033",
+        "R01-039",
+        "R01-041",
+        "R01-042",
+        "R01-044",
+        "R01-048",
+        "R01-054",
+        "R01-075",
+        "R01-076",
+        "R01-083",
+        "R01-084",
+        "R01-087",
+        "R01-097",
+        "R01-100",
+        "R01-103",
+        "R01-111",
+        "R01-114",
+        "R01-116",
+        "R01-117",
+        "R01-124",
+        "R01-126",
+        "R01-131",
+        "R01-133",
+        "R01-137",
+        "R01-138",
+        "R01-141",
+        "R01-144",
+        "R01-146"
+      ]
+    },
+    "radiogenomics_rich": {
+      "metrics": {
+        "accuracy": 0.7788461538461539,
+        "balanced_accuracy": 0.5413080895008606,
+        "sensitivity": 0.14285714285714285,
+        "specificity": 0.9397590361445783,
+        "precision": 0.375,
+        "f1": 0.20689655172413793,
+        "roc_auc": 0.5863453815261045,
+        "average_precision": 0.30255528910762086,
+        "brier_score": 0.17024442681916516,
+        "confusion_matrix": [
+          [
+            78,
+            5
+          ],
+          [
+            18,
+            3
+          ]
+        ]
+      },
+      "patients": 104,
+      "majority_baseline_accuracy": 0.7980769230769231,
+      "input_features": 1682,
+      "data": "data/radiogenomics_subtype.csv",
+      "dataset_sha256": "52f3a497836c5d02d348dbc561ede8e6bd9714411fc856b765d17be631221987",
+      "excluded_previously_inspected_test_ids": [
+        "R01-002",
+        "R01-003",
+        "R01-004",
+        "R01-018",
+        "R01-021",
+        "R01-028",
+        "R01-030",
+        "R01-033",
+        "R01-039",
+        "R01-041",
+        "R01-042",
+        "R01-044",
+        "R01-048",
+        "R01-054",
+        "R01-075",
+        "R01-076",
+        "R01-083",
+        "R01-084",
+        "R01-087",
+        "R01-097",
+        "R01-100",
+        "R01-103",
+        "R01-111",
+        "R01-114",
+        "R01-116",
+        "R01-117",
+        "R01-124",
+        "R01-126",
+        "R01-131",
+        "R01-133",
+        "R01-137",
+        "R01-138",
+        "R01-141",
+        "R01-144",
+        "R01-146"
+      ]
+    }
+  },
+  "target_accuracy": 0.83,
+  "target_met": false,
+  "interpretation": "Exploratory development CV. Both cohort holdouts were previously inspected and are excluded. New independent patients are required for a final superiority claim."
+}

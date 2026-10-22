@@ -1,0 +1,8 @@
+# Preserve saved models and frozen data hashes across checkouts.
+*.pdf binary
+*.joblib binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+data/** -text
+artifacts/** -text

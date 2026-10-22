@@ -1,0 +1,179 @@
+{
+  "dataset_sha256": "c13ba1c69401875309e7e2b2fac9c6ac9fd8ef316adcda6a05eb9ecfc26cb47b",
+  "split_sha256": "365ad3bbdb473468c87b6a485b8eb610cca570a39640478caf8912d8ac1c054e",
+  "development_patients": 45,
+  "test_patients": 16,
+  "target_accuracy": 0.83,
+  "models": {
+    "paper_mlp": {
+      "nested_cv_accuracy": 0.6444444444444445,
+      "nested_cv_balanced_accuracy": 0.6428571428571428,
+      "nested_cv_auc": 0.6011904761904763,
+      "confusion_matrix": [
+        [
+          13,
+          8
+        ],
+        [
+          8,
+          16
+        ]
+      ],
+      "fold_parameters": [
+        {
+          "select__alpha": 0.01
+        },
+        {
+          "select__alpha": 0.001
+        },
+        {
+          "select__alpha": 0.001
+        },
+        {
+          "select__alpha": 0.01
+        },
+        {
+          "select__alpha": 0.001
+        }
+      ],
+      "frozen_parameters": {
+        "select__alpha": 0.001
+      }
+    },
+    "cnn_logistic": {
+      "nested_cv_accuracy": 0.4666666666666667,
+      "nested_cv_balanced_accuracy": 0.4642857142857143,
+      "nested_cv_auc": 0.41269841269841273,
+      "confusion_matrix": [
+        [
+          9,
+          12
+        ],
+        [
+          12,
+          12
+        ]
+      ],
+      "fold_parameters": [
+        {
+          "model__C": 0.01,
+          "select__k": 20
+        },
+        {
+          "model__C": 0.1,
+          "select__k": 10
+        },
+        {
+          "model__C": 0.01,
+          "select__k": 20
+        },
+        {
+          "model__C": 0.1,
+          "select__k": 20
+        },
+        {
+          "model__C": 1,
+          "select__k": 10
+        }
+      ],
+      "frozen_parameters": {
+        "model__C": 1,
+        "select__k": 10
+      }
+    },
+    "hybrid_logistic": {
+      "nested_cv_accuracy": 0.4,
+      "nested_cv_balanced_accuracy": 0.39880952380952384,
+      "nested_cv_auc": 0.38492063492063494,
+      "confusion_matrix": [
+        [
+          8,
+          13
+        ],
+        [
+          14,
+          10
+        ]
+      ],
+      "fold_parameters": [
+        {
+          "model__C": 0.1,
+          "select__k": 10
+        },
+        {
+          "model__C": 0.01,
+          "select__k": 20
+        },
+        {
+          "model__C": 1,
+          "select__k": 20
+        },
+        {
+          "model__C": 0.01,
+          "select__k": 20
+        },
+        {
+          "model__C": 0.01,
+          "select__k": 20
+        }
+      ],
+      "frozen_parameters": {
+        "model__C": 0.01,
+        "select__k": 10
+      }
+    },
+    "hybrid_svm": {
+      "nested_cv_accuracy": 0.4444444444444444,
+      "nested_cv_balanced_accuracy": 0.46428571428571425,
+      "nested_cv_auc": 0.3273809523809524,
+      "confusion_matrix": [
+        [
+          16,
+          5
+        ],
+        [
+          20,
+          4
+        ]
+      ],
+      "fold_parameters": [
+        {
+          "model__C": 10,
+          "model__gamma": "scale",
+          "select__k": 10
+        },
+        {
+          "model__C": 0.1,
+          "model__gamma": "scale",
+          "select__k": 10
+        },
+        {
+          "model__C": 0.1,
+          "model__gamma": "scale",
+          "select__k": 10
+        },
+        {
+          "model__C": 0.1,
+          "model__gamma": "scale",
+          "select__k": 10
+        },
+        {
+          "model__C": 1,
+          "model__gamma": "scale",
+          "select__k": 20
+        }
+      ],
+      "frozen_parameters": {
+        "model__C": 0.1,
+        "model__gamma": "scale",
+        "select__k": 10
+      }
+    }
+  },
+  "seed": 42,
+  "selection_metric": "nested CV balanced accuracy; AUC breaks ties",
+  "test_evaluated": false,
+  "dataset_path": "data/tcga_crops_features.csv",
+  "feature_mode": "hybrid",
+  "evaluation": "25% held-out unique published CT patient arrays within TCGA-LUAD/LUSC. Clinical ID mapping is unavailable; collection/class confounding is possible. The MLP is an adaptation using crop textures, not original 3D HU radiomics."
+}

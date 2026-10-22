@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "task": "lymph_node_involvement",
+  "created_at_utc": "2026-10-10T06:40:22.445740+00:00",
+  "training_allowed": false,
+  "status": "blocked_pending_scan_timing_or_label_support",
+  "blocking_reason": {
+    "scan_timing": "Verify that the extracted radiomic CT matches the clinical scan and that the positive CT-to-surgery interval means CT preceded surgery."
+  },
+  "semantic_evidence": {
+    "scan_timing": null
+  },
+  "counts": {
+    "source_patients": 139,
+    "known_nodal_labels": 139,
+    "source_node_negative": 113,
+    "source_node_positive": 26,
+    "eligible_patients": 120,
+    "excluded_patients": 19,
+    "eligible_node_negative": 96,
+    "eligible_node_positive": 24,
+    "source_n_stage_counts": {
+      "N0": 113,
+      "N2": 16,
+      "N1": 10
+    },
+    "eligible_by_split": {
+      "development": {
+        "node_negative": 71,
+        "node_positive": 17
+      },
+      "test": {
+        "node_negative": 25,
+        "node_positive": 7
+      }
+    },
+    "exclusions_by_reason": {
+      "ct_outside_provisional_1_to_90_day_window": 19
+    }
+  },
+  "cohort_sha256": "30bfa01983a01a7f861938c47972f2d846d57f1e81d6e626d27666168fb787d2",
+  "outputs": {
+    "cohort": "data/nodal_cohort.csv",
+    "features": "data/nodal_features.csv",
+    "outcomes": "data/nodal_outcomes.csv",
+    "splits": "data/nodal_cohort.splits.csv",
+    "provenance": "data/nodal_cohort.provenance.json",
+    "case_audit": "artifacts/nodal_audit/case_audit.csv",
+    "audit": "artifacts/nodal_audit/audit.json"
+  },
+  "limitations": [
+    "Small retrospective cohort; needs independent validation.",
+    "Clinical N stage is unavailable; occult spread cannot be established.",
+    "Patient labels do not identify affected nodes or distant-organ spread.",
+    "Third-party radiomic extraction requires matched preprocessing."
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "model_sha256": "de907c675c0c7b623d572af2c1a6748fc7c8c1276e2b53c5fd9d879643ce0e34",
+  "source_sha256": "5861908cdd876101a8215a031c372caf61c2c3c9af140d566a7a90005e152ef2",
+  "training_patients": 104,
+  "source_hash_verified_against_bundle": true,
+  "training_patient_ids_sha256": "1e90cb7d82d6ef6af76218750986607910aef98e04343b7c60c9f05a8028fca9",
+  "feature_names": [
+    "clinical_age_at_diagnosis",
+    "clinical_male",
+    "clinical_pack_years",
+    "clinical_smoking_never",
+    "clinical_smoking_former",
+    "clinical_smoking_current",
+    "clinical_pathological_t",
+    "clinical_pathological_n",
+    "clinical_grade",
+    "clinical_lymphovascular_invasion",
+    "clinical_pleural_invasion"
+  ],
+  "statistics": {
+    "clinical_age_at_diagnosis": {
+      "median": 70.0,
+      "minimum": 43.0,
+      "maximum": 87.0,
+      "q01": 46.0,
+      "q99": 84.97
+    },
+    "clinical_male": {
+      "median": 1.0,
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "q01": 0.0,
+      "q99": 1.0
+    },
+    "clinical_pack_years": {
+      "median": 40.5,
+      "minimum": 1.0,
+      "maximum": 120.0,
+      "q01": 1.0,
+      "q99": 120.0
+    },
+    "clinical_smoking_never": {
+      "median": 0.0,
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "q01": 0.0,
+      "q99": 1.0
+    },
+    "clinical_smoking_former": {
+      "median": 1.0,
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "q01": 0.0,
+      "q99": 1.0
+    },
+    "clinical_smoking_current": {
+      "median": 0.0,
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "q01": 0.0,
+      "q99": 1.0
+    },
+    "clinical_pathological_t": {
+      "median": 1.0,
+      "minimum": 0.0,
+      "maximum": 4.0,
+      "q01": 0.0,
+      "q99": 4.0
+    },
+    "clinical_pathological_n": {
+      "median": 0.0,
+      "minimum": 0.0,
+      "maximum": 2.0,
+      "q01": 0.0,
+      "q99": 2.0
+    },
+    "clinical_grade": {
+      "median": 2.0,
+      "minimum": 1.0,
+      "maximum": 3.0,
+      "q01": 1.0,
+      "q99": 3.0
+    },
+    "clinical_lymphovascular_invasion": {
+      "median": 0.0,
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "q01": 0.0,
+      "q99": 1.0
+    },
+    "clinical_pleural_invasion": {
+      "median": 0.0,
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "q01": 0.0,
+      "q99": 1.0
+    }
+  },
+  "method": "1st\u201399th percentile reference ranges from fitted training patients only",
+  "review_fraction_threshold": 0.1,
+  "limitation": "Heuristic input review. No calibrated uncertainty, site-drift guarantee or clinical acceptance threshold."
+}

@@ -1,0 +1,284 @@
+{
+  "dataset_path": "data/radiogenomics_clinical_subtype.csv",
+  "dataset_sha256": "41bdfa70e4d1e7ef43b6f2e084968e0a8892d36253d6927baaa3072ae91f07ef",
+  "split_sha256": "78a214c74dc09fc74fd9fb4fb93ea73931d5211b379fb1eb4cfbd1b8630c535d",
+  "seed": 42,
+  "development_patients": 104,
+  "test_patients": 35,
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "thresholds": [
+    0.35,
+    0.45,
+    0.5,
+    0.55,
+    0.65,
+    0.75,
+    0.85
+  ],
+  "selection_metric": "nested CV accuracy; balanced accuracy then AUC break ties",
+  "target_accuracy": 0.83,
+  "clinical_features": [
+    "clinical_age_at_diagnosis",
+    "clinical_male",
+    "clinical_pack_years",
+    "clinical_smoking_never",
+    "clinical_smoking_former",
+    "clinical_smoking_current"
+  ],
+  "previously_inspected_holdout": true,
+  "test_patient_ids_excluded_from_selection": [
+    "R01-002",
+    "R01-003",
+    "R01-004",
+    "R01-018",
+    "R01-021",
+    "R01-028",
+    "R01-030",
+    "R01-033",
+    "R01-039",
+    "R01-041",
+    "R01-042",
+    "R01-044",
+    "R01-048",
+    "R01-054",
+    "R01-075",
+    "R01-076",
+    "R01-083",
+    "R01-084",
+    "R01-087",
+    "R01-097",
+    "R01-100",
+    "R01-103",
+    "R01-111",
+    "R01-114",
+    "R01-116",
+    "R01-117",
+    "R01-124",
+    "R01-126",
+    "R01-131",
+    "R01-133",
+    "R01-137",
+    "R01-138",
+    "R01-141",
+    "R01-144",
+    "R01-146"
+  ],
+  "candidates": {
+    "paper_mlp_accuracy": {
+      "estimator": "Pipeline(steps=[('impute',\n                 SimpleImputer(keep_empty_features=True, strategy='median')),\n                ('scale', StandardScaler()), ('select', LassoTopK()),\n                ('smote', AdaptiveSMOTE()),\n                ('model', MLPClassifier(max_iter=5000, random_state=42))])",
+      "grid": {
+        "select__alpha": [
+          0.001,
+          0.01
+        ]
+      },
+      "view": "original",
+      "tune_threshold": false
+    },
+    "original_accuracy_logistic": {
+      "estimator": "Pipeline(memory=Memory(location=artifacts/radiogenomics_accuracy/training_cache),\n         steps=[('impute',\n                 SimpleImputer(keep_empty_features=True, strategy='median')),\n                ('prune', CorrelationPruner()), ('scale', StandardScaler()),\n                ('select', SelectKBest(k='all')),\n                ('model', LogisticRegression(max_iter=4000, random_state=42))])",
+      "grid": {
+        "select__k": [
+          5,
+          15,
+          40,
+          "all"
+        ],
+        "model__C": [
+          0.01,
+          0.1,
+          1,
+          10
+        ]
+      },
+      "view": "original",
+      "tune_threshold": true
+    },
+    "rich_accuracy_logistic": {
+      "estimator": "Pipeline(memory=Memory(location=artifacts/radiogenomics_accuracy/training_cache),\n         steps=[('impute',\n                 SimpleImputer(keep_empty_features=True, strategy='median')),\n                ('prune', CorrelationPruner()),\n                ('scale',\n                 QuantileTransformer(n_quantiles=30,\n                                     output_distribution='normal',\n                                     random_state=42)),\n                ('select', SelectKBest(k='all')),\n                ('model', LogisticRegression(max_iter=4000, random_state=42))])",
+      "grid": {
+        "select__k": [
+          10,
+          40,
+          100
+        ],
+        "model__C": [
+          0.01,
+          0.1,
+          1
+        ]
+      },
+      "view": "rich",
+      "tune_threshold": true
+    },
+    "original_accuracy_svm": {
+      "estimator": "Pipeline(memory=Memory(location=artifacts/radiogenomics_accuracy/training_cache),\n         steps=[('impute',\n                 SimpleImputer(keep_empty_features=True, strategy='median')),\n                ('prune', CorrelationPruner()),\n                ('scale',\n                 QuantileTransformer(n_quantiles=30,\n                                     output_distribution='normal',\n                                     random_state=42)),\n                ('select', SelectKBest(k='all')),\n                ('model', SVC(probability=True, random_state=42))])",
+      "grid": {
+        "select__k": [
+          10,
+          30,
+          "all"
+        ],
+        "model__C": [
+          0.3,
+          3,
+          30
+        ],
+        "model__gamma": [
+          "scale",
+          0.01,
+          0.1
+        ]
+      },
+      "view": "original",
+      "tune_threshold": true
+    },
+    "rich_accuracy_svm": {
+      "estimator": "Pipeline(memory=Memory(location=artifacts/radiogenomics_accuracy/training_cache),\n         steps=[('impute',\n                 SimpleImputer(keep_empty_features=True, strategy='median')),\n                ('prune', CorrelationPruner()),\n                ('scale',\n                 QuantileTransformer(n_quantiles=30,\n                                     output_distribution='normal',\n                                     random_state=42)),\n                ('select', SelectKBest(k='all')),\n                ('model', SVC(probability=True, random_state=42))])",
+      "grid": {
+        "select__k": [
+          10,
+          40,
+          100
+        ],
+        "model__C": [
+          0.3,
+          3,
+          30
+        ],
+        "model__gamma": [
+          "scale",
+          0.01
+        ]
+      },
+      "view": "rich",
+      "tune_threshold": true
+    },
+    "original_accuracy_lda": {
+      "estimator": "Pipeline(memory=Memory(location=artifacts/radiogenomics_accuracy/training_cache),\n         steps=[('impute',\n                 SimpleImputer(keep_empty_features=True, strategy='median')),\n                ('prune', CorrelationPruner()),\n                ('scale',\n                 QuantileTransformer(n_quantiles=30,\n                                     output_distribution='normal',\n                                     random_state=42)),\n                ('select', SelectKBest(k='all')),\n                ('model', LinearDiscriminantAnalysis(solver='lsqr'))])",
+      "grid": {
+        "select__k": [
+          10,
+          30,
+          "all"
+        ],
+        "model__shrinkage": [
+          "auto",
+          0.1,
+          0.5,
+          0.9
+        ]
+      },
+      "view": "original",
+      "tune_threshold": true
+    },
+    "original_accuracy_extra_trees": {
+      "estimator": "Pipeline(memory=Memory(location=artifacts/radiogenomics_accuracy/training_cache),\n         steps=[('impute',\n                 SimpleImputer(keep_empty_features=True, strategy='median')),\n                ('prune', CorrelationPruner()), ('scale', StandardScaler()),\n                ('select', SelectKBest(k='all')),\n                ('model',\n                 ExtraTreesClassifier(n_estimators=300, n_jobs=2,\n                                      random_state=42))])",
+      "grid": {
+        "select__k": [
+          10,
+          30,
+          "all"
+        ],
+        "model__min_samples_leaf": [
+          2,
+          5
+        ],
+        "model__max_features": [
+          0.3,
+          1.0
+        ]
+      },
+      "view": "original",
+      "tune_threshold": true
+    },
+    "original_accuracy_catboost": {
+      "estimator": "Pipeline(memory=Memory(location=artifacts/radiogenomics_accuracy/training_cache),\n         steps=[('impute',\n                 SimpleImputer(keep_empty_features=True, strategy='median')),\n                ('prune', CorrelationPruner()), ('scale', StandardScaler()),\n                ('select', SelectKBest(k='all')),\n                ('model',\n                 CatBoostClassifier(allow_writing_files=False, iterations=300, learning_rate=0.05, loss_function='Logloss', random_seed=42, thread_count=2, verbose=False))])",
+      "grid": {
+        "model__depth": [
+          2,
+          3,
+          4
+        ],
+        "model__l2_leaf_reg": [
+          3,
+          20
+        ],
+        "select__k": [
+          10,
+          "all"
+        ]
+      },
+      "view": "original",
+      "tune_threshold": true
+    },
+    "clinical_accuracy_logistic": {
+      "estimator": "Pipeline(memory=Memory(location=artifacts/radiogenomics_accuracy/training_cache),\n         steps=[('impute',\n                 SimpleImputer(keep_empty_features=True, strategy='median')),\n                ('scale', StandardScaler()), ('select', SelectKBest(k='all')),\n                ('model', LogisticRegression(max_iter=4000, random_state=42))])",
+      "grid": {
+        "model__C": [
+          0.01,
+          0.1,
+          1,
+          10
+        ]
+      },
+      "view": "clinical",
+      "tune_threshold": true
+    },
+    "clinical_accuracy_catboost": {
+      "estimator": "Pipeline(memory=Memory(location=artifacts/radiogenomics_accuracy/training_cache),\n         steps=[('impute',\n                 SimpleImputer(keep_empty_features=True, strategy='median')),\n                ('scale', StandardScaler()), ('select', SelectKBest(k='all')),\n                ('model',\n                 CatBoostClassifier(allow_writing_files=False, iterations=300, learning_rate=0.05, loss_function='Logloss', random_seed=42, thread_count=2, verbose=False))])",
+      "grid": {
+        "model__depth": [
+          2,
+          3,
+          4
+        ],
+        "model__l2_leaf_reg": [
+          3,
+          20
+        ]
+      },
+      "view": "clinical",
+      "tune_threshold": true
+    },
+    "fusion_accuracy_logistic": {
+      "estimator": "Pipeline(memory=Memory(location=artifacts/radiogenomics_accuracy/training_cache),\n         steps=[('impute',\n                 SimpleImputer(keep_empty_features=True, strategy='median')),\n                ('prune', CorrelationPruner()), ('scale', StandardScaler()),\n                ('select', SelectKBest(k='all')),\n                ('model', LogisticRegression(max_iter=4000, random_state=42))])",
+      "grid": {
+        "select__k": [
+          10,
+          30,
+          "all"
+        ],
+        "model__C": [
+          0.01,
+          0.1,
+          1,
+          10
+        ]
+      },
+      "view": "fusion",
+      "tune_threshold": true
+    },
+    "fusion_accuracy_catboost": {
+      "estimator": "Pipeline(memory=Memory(location=artifacts/radiogenomics_accuracy/training_cache),\n         steps=[('impute',\n                 SimpleImputer(keep_empty_features=True, strategy='median')),\n                ('prune', CorrelationPruner()), ('scale', StandardScaler()),\n                ('select', SelectKBest(k='all')),\n                ('model',\n                 CatBoostClassifier(allow_writing_files=False, iterations=300, learning_rate=0.05, loss_function='Logloss', random_seed=42, thread_count=2, verbose=False))])",
+      "grid": {
+        "model__depth": [
+          2,
+          3,
+          4
+        ],
+        "model__l2_leaf_reg": [
+          3,
+          20
+        ],
+        "select__k": [
+          10,
+          "all"
+        ]
+      },
+      "view": "fusion",
+      "tune_threshold": true
+    }
+  }
+}

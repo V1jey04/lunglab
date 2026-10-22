@@ -1,0 +1,8 @@
+{
+  "default_experiment": "radiogenomics_accuracy",
+  "default_model": "rich_accuracy_logistic",
+  "refinement_selected_model": "baseline_rich_logistic",
+  "experimental_accuracy_label": "91.4%, not development-selected",
+  "bagged_example_inference": "5 cases, no errors",
+  "app_exceptions": 0
+}

@@ -1,0 +1,21 @@
+# Explicit project settings; the paper does not publish an exact extraction config.
+# CT input must contain Hounsfield units, not windowed JPEG/PNG pixel intensities.
+imageType:
+  Original: {}
+featureClass:
+  shape: []
+  firstorder: []
+  glcm: []
+  glrlm: []
+  glszm: []
+  gldm: []
+  ngtdm: []
+setting:
+  binWidth: 25
+  resampledPixelSpacing: [1.0, 1.0, 1.0]
+  interpolator: sitkBSpline
+  normalize: false
+  correctMask: false
+  minimumROIDimensions: 3
+  minimumROISize: 8
+  label: 1

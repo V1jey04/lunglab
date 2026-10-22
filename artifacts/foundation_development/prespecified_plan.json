@@ -1,0 +1,16 @@
+{
+  "evaluation": "5-fold stratified patient CV on development patients only",
+  "seed": 42,
+  "checkpoint_url": "https://huggingface.co/jingang/TabICL/resolve/4dcd344ece2c00be9e831fdd35bed57b5ad83e19/tabicl-classifier-v2-20260212.ckpt",
+  "checkpoint_sha256": "bdc7dbd5e4ff21f8f0456fcf90c6b7cdf72dbea960f2d05b19bec19f9b3d4ed0",
+  "fixed_parameters": {
+    "n_estimators": 8,
+    "features_maximum": 50,
+    "correlation_threshold": 0.95,
+    "threshold": 0.5
+  },
+  "models": {},
+  "target_accuracy": 0.83,
+  "target_met": false,
+  "interpretation": "Exploratory development CV. Both cohort holdouts were previously inspected and are excluded. New independent patients are required for a final superiority claim."
+}

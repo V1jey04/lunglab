@@ -1,0 +1,338 @@
+{
+  "schema_version": 1,
+  "task": "recorded_recurrence",
+  "created_at_utc": "2026-10-12T06:41:07.351907+00:00",
+  "endpoint": "Source-recorded recurrence yes/no during variable study follow-up",
+  "prediction_context": "Exploratory estimate of recurrence recorded in the source study's variable follow-up. Requires available surgical pathology information. No fixed time horizon; a source 'no' does not establish future freedom from recurrence. Not a validated clinical risk estimate.",
+  "limitations": [
+    "The yes/no target reflects the source records, not verified recurrence-free surveillance.",
+    "Follow-up length, competing death and scan/surgery timing are not modelled by this classifier.",
+    "Small retrospective cohort; no independent clinical validation or individual confidence intervals.",
+    "The preserved test patients were inspected in previous project experiments; scores are exploratory.",
+    "CT measurements require the same extraction protocol as the training source."
+  ],
+  "dataset_path": "artifacts/recurrence_recorded/cohort.csv",
+  "cohort_sha256": "5861908cdd876101a8215a031c372caf61c2c3c9af140d566a7a90005e152ef2",
+  "source_provenance": {
+    "features_path": "data/radiogenomics_clinical_subtype.csv",
+    "features_sha256": "41bdfa70e4d1e7ef43b6f2e084968e0a8892d36253d6927baaa3072ae91f07ef",
+    "clinical_path": "data/raw/nsclc_radiogenomics/clinical.csv",
+    "clinical_sha256": "0a1f7cdf02cef58450db17f116a3fb0ecfd4d737ca6843bb1939dbe421071476",
+    "split_path": "data/radiogenomics_clinical_subtype.splits.csv",
+    "split_sha256": "78a214c74dc09fc74fd9fb4fb93ea73931d5211b379fb1eb4cfbd1b8630c535d",
+    "source_patients": 139,
+    "excluded_unknown_recurrence": 0
+  },
+  "development_patients": 104,
+  "test_patients": 35,
+  "recorded_recurrences": 37,
+  "development_recorded_recurrences": 27,
+  "test_recorded_recurrences": 10,
+  "selection_rule": "Lowest five-fold development out-of-fold Brier score; then AUC, then fewer inputs.",
+  "protocol": "L2 logistic pipelines, C=0.1. Threshold maximizes development out-of-fold balanced accuracy on a 0.10\u20130.60 grid. Exploratory evaluation; initial age/smoking-only test scores were already inspected.",
+  "thresholds": {
+    "clinical_logistic": 0.22,
+    "clinical_radiomics_logistic": 0.27
+  },
+  "development_metrics": {
+    "clinical_logistic": {
+      "accuracy": 0.5673076923076923,
+      "balanced_accuracy": 0.6356421356421357,
+      "roc_auc": 0.5969215969215969,
+      "brier_score": 0.1951905002095114,
+      "recurrence_recall": 0.7777777777777778,
+      "no_recorded_recurrence_recall": 0.4935064935064935,
+      "recurrence_precision": 0.35,
+      "confusion_matrix": [
+        [
+          38,
+          39
+        ],
+        [
+          6,
+          21
+        ]
+      ],
+      "threshold": 0.22
+    },
+    "clinical_radiomics_logistic": {
+      "accuracy": 0.625,
+      "balanced_accuracy": 0.5784030784030784,
+      "roc_auc": 0.518999518999519,
+      "brier_score": 0.2208692397714394,
+      "recurrence_recall": 0.48148148148148145,
+      "no_recorded_recurrence_recall": 0.6753246753246753,
+      "recurrence_precision": 0.34210526315789475,
+      "confusion_matrix": [
+        [
+          52,
+          25
+        ],
+        [
+          14,
+          13
+        ]
+      ],
+      "threshold": 0.27
+    }
+  },
+  "selected_model_by_development": "clinical_logistic",
+  "prevalence_reference_development": {
+    "accuracy": 0.7403846153846154,
+    "balanced_accuracy": 0.5,
+    "roc_auc": 0.47017797017797014,
+    "brier_score": 0.19248813136325318,
+    "recurrence_recall": 0.0,
+    "no_recorded_recurrence_recall": 1.0,
+    "recurrence_precision": 0.0,
+    "confusion_matrix": [
+      [
+        77,
+        0
+      ],
+      [
+        27,
+        0
+      ]
+    ],
+    "threshold": 0.5
+  },
+  "frozen_models": {
+    "clinical_logistic": {
+      "model_sha256": "de907c675c0c7b623d572af2c1a6748fc7c8c1276e2b53c5fd9d879643ce0e34",
+      "feature_names": [
+        "clinical_age_at_diagnosis",
+        "clinical_male",
+        "clinical_pack_years",
+        "clinical_smoking_never",
+        "clinical_smoking_former",
+        "clinical_smoking_current",
+        "clinical_pathological_t",
+        "clinical_pathological_n",
+        "clinical_grade",
+        "clinical_lymphovascular_invasion",
+        "clinical_pleural_invasion"
+      ]
+    },
+    "clinical_radiomics_logistic": {
+      "model_sha256": "7ffc8d7aa75e234e714d1fc0ed8178f91d3178d2ba377a79b63807fac24cbe77",
+      "feature_names": [
+        "clinical_age_at_diagnosis",
+        "clinical_male",
+        "clinical_pack_years",
+        "clinical_smoking_never",
+        "clinical_smoking_former",
+        "clinical_smoking_current",
+        "clinical_pathological_t",
+        "clinical_pathological_n",
+        "clinical_grade",
+        "clinical_lymphovascular_invasion",
+        "clinical_pleural_invasion",
+        "original_shape_Maximum2DDiameterColumn",
+        "original_shape_Maximum2DDiameterRow",
+        "original_shape_Maximum2DDiameterSlice",
+        "original_shape_Maximum3DDiameter",
+        "original_shape_MeshVolume",
+        "original_shape_Sphericity",
+        "original_shape_SurfaceArea",
+        "original_shape_SurfaceVolumeRatio",
+        "original_firstorder_10Percentile",
+        "original_firstorder_90Percentile",
+        "original_firstorder_Energy",
+        "original_firstorder_Entropy",
+        "original_firstorder_InterquartileRange",
+        "original_firstorder_Kurtosis",
+        "original_firstorder_Maximum",
+        "original_firstorder_MeanAbsoluteDeviation",
+        "original_firstorder_Mean",
+        "original_firstorder_Median",
+        "original_firstorder_Minimum",
+        "original_firstorder_Range",
+        "original_firstorder_RobustMeanAbsoluteDeviation",
+        "original_firstorder_RootMeanSquared",
+        "original_firstorder_Skewness",
+        "original_firstorder_TotalEnergy",
+        "original_firstorder_Uniformity",
+        "original_firstorder_Variance",
+        "original_glcm_Autocorrelation",
+        "original_glcm_ClusterProminence",
+        "original_glcm_ClusterShade",
+        "original_glcm_ClusterTendency",
+        "original_glcm_Contrast",
+        "original_glcm_Correlation",
+        "original_glcm_DifferenceAverage",
+        "original_glcm_DifferenceEntropy",
+        "original_glcm_DifferenceVariance",
+        "original_glcm_Id",
+        "original_glcm_Idm",
+        "original_glcm_Idmn",
+        "original_glcm_Idn",
+        "original_glcm_Imc1",
+        "original_glcm_Imc2",
+        "original_glcm_InverseVariance",
+        "original_glcm_JointAverage",
+        "original_glcm_JointEnergy",
+        "original_glcm_JointEntropy",
+        "original_glcm_MCC",
+        "original_glcm_MaximumProbability",
+        "original_glcm_SumAverage",
+        "original_glcm_SumEntropy",
+        "original_glcm_SumSquares",
+        "original_gldm_DependenceEntropy",
+        "original_gldm_DependenceNonUniformity",
+        "original_gldm_DependenceNonUniformityNormalized",
+        "original_gldm_DependenceVariance",
+        "original_gldm_GrayLevelNonUniformity",
+        "original_gldm_GrayLevelVariance",
+        "original_gldm_HighGrayLevelEmphasis",
+        "original_gldm_LargeDependenceEmphasis",
+        "original_gldm_LargeDependenceHighGrayLevelEmphasis",
+        "original_gldm_LargeDependenceLowGrayLevelEmphasis",
+        "original_gldm_LowGrayLevelEmphasis",
+        "original_gldm_SmallDependenceEmphasis",
+        "original_gldm_SmallDependenceHighGrayLevelEmphasis",
+        "original_gldm_SmallDependenceLowGrayLevelEmphasis",
+        "original_glrlm_GrayLevelNonUniformity",
+        "original_glrlm_GrayLevelNonUniformityNormalized",
+        "original_glrlm_GrayLevelVariance",
+        "original_glrlm_HighGrayLevelRunEmphasis",
+        "original_glrlm_LongRunEmphasis",
+        "original_glrlm_LongRunHighGrayLevelEmphasis",
+        "original_glrlm_LongRunLowGrayLevelEmphasis",
+        "original_glrlm_LowGrayLevelRunEmphasis",
+        "original_glrlm_RunEntropy",
+        "original_glrlm_RunLengthNonUniformity",
+        "original_glrlm_RunLengthNonUniformityNormalized",
+        "original_glrlm_RunPercentage",
+        "original_glrlm_RunVariance",
+        "original_glrlm_ShortRunEmphasis",
+        "original_glrlm_ShortRunHighGrayLevelEmphasis",
+        "original_glrlm_ShortRunLowGrayLevelEmphasis",
+        "original_glszm_GrayLevelNonUniformity",
+        "original_glszm_GrayLevelNonUniformityNormalized",
+        "original_glszm_GrayLevelVariance",
+        "original_glszm_HighGrayLevelZoneEmphasis",
+        "original_glszm_LargeAreaEmphasis",
+        "original_glszm_LargeAreaHighGrayLevelEmphasis",
+        "original_glszm_LargeAreaLowGrayLevelEmphasis",
+        "original_glszm_LowGrayLevelZoneEmphasis",
+        "original_glszm_SizeZoneNonUniformity",
+        "original_glszm_SizeZoneNonUniformityNormalized",
+        "original_glszm_SmallAreaEmphasis",
+        "original_glszm_SmallAreaHighGrayLevelEmphasis",
+        "original_glszm_SmallAreaLowGrayLevelEmphasis",
+        "original_glszm_ZoneEntropy",
+        "original_glszm_ZonePercentage",
+        "original_glszm_ZoneVariance",
+        "original_ngtdm_Busyness",
+        "original_ngtdm_Coarseness",
+        "original_ngtdm_Complexity",
+        "original_ngtdm_Contrast",
+        "original_ngtdm_Strength"
+      ]
+    }
+  },
+  "test_patient_ids": [
+    "R01-002",
+    "R01-003",
+    "R01-004",
+    "R01-018",
+    "R01-021",
+    "R01-028",
+    "R01-030",
+    "R01-033",
+    "R01-039",
+    "R01-041",
+    "R01-042",
+    "R01-044",
+    "R01-048",
+    "R01-054",
+    "R01-075",
+    "R01-076",
+    "R01-083",
+    "R01-084",
+    "R01-087",
+    "R01-097",
+    "R01-100",
+    "R01-103",
+    "R01-111",
+    "R01-114",
+    "R01-116",
+    "R01-117",
+    "R01-124",
+    "R01-126",
+    "R01-131",
+    "R01-133",
+    "R01-137",
+    "R01-138",
+    "R01-141",
+    "R01-144",
+    "R01-146"
+  ],
+  "previously_inspected_holdout": true,
+  "fixed_horizon_supported": false,
+  "test_metrics": {
+    "clinical_logistic": {
+      "accuracy": 0.4857142857142857,
+      "balanced_accuracy": 0.5800000000000001,
+      "roc_auc": 0.5920000000000001,
+      "brier_score": 0.19365621084826498,
+      "recurrence_recall": 0.8,
+      "no_recorded_recurrence_recall": 0.36,
+      "recurrence_precision": 0.3333333333333333,
+      "confusion_matrix": [
+        [
+          9,
+          16
+        ],
+        [
+          2,
+          8
+        ]
+      ],
+      "threshold": 0.22
+    },
+    "clinical_radiomics_logistic": {
+      "accuracy": 0.6571428571428571,
+      "balanced_accuracy": 0.61,
+      "roc_auc": 0.6360000000000001,
+      "brier_score": 0.17969809068141926,
+      "recurrence_recall": 0.5,
+      "no_recorded_recurrence_recall": 0.72,
+      "recurrence_precision": 0.4166666666666667,
+      "confusion_matrix": [
+        [
+          18,
+          7
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "threshold": 0.27
+    }
+  },
+  "prevalence_reference_test": {
+    "accuracy": 0.7142857142857143,
+    "balanced_accuracy": 0.5,
+    "roc_auc": 0.5,
+    "brier_score": 0.20476278529163144,
+    "recurrence_recall": 0.0,
+    "no_recorded_recurrence_recall": 1.0,
+    "recurrence_precision": 0.0,
+    "confusion_matrix": [
+      [
+        25,
+        0
+      ],
+      [
+        10,
+        0
+      ]
+    ],
+    "threshold": 0.5
+  },
+  "evaluation": "Preserved patient split: development-only selection; previously inspected test patients scored after freezing.",
+  "interpretation": "Exploratory estimate of recurrence recorded in the source study's variable follow-up. Requires available surgical pathology information. No fixed time horizon; a source 'no' does not establish future freedom from recurrence. Not a validated clinical risk estimate."
+}

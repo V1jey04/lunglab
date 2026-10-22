@@ -1,0 +1,63 @@
+{
+  "verified_at_utc": "2026-10-10T07:24:56.726002+00:00",
+  "version": "0.2.0",
+  "tests": {
+    "passed": 103,
+    "warnings": 6,
+    "duration_seconds": 24.06,
+    "log": "artifacts/delivery/test-results.txt"
+  },
+  "local_api": {
+    "status": 200,
+    "patient_id": "R01-002",
+    "p_squamous_cell_carcinoma": 0.12144059832357476,
+    "explanation": "linear_log_odds",
+    "case_context": "Previously inspected public-cohort case; not fresh validation."
+  },
+  "default_model_sha256": "db9a624ee070cdef56c9dbe49b4d2430c1f4a1d3bf756061a4f6034b67a5a4a8",
+  "release_files": {
+    "dist/lung_radiomics-0.2.0-py3-none-any.whl": "f6c5a7d15a86e9542269269d45c8b4597a557dc3f2b7659945356fb2162eaf1c",
+    "dist/lung_radiomics-0.2.0.tar.gz": "93bf8792fc85d88b81ce2e97846c0f2563ee5d72b5e3300f0e7ef4f873f44fa2"
+  },
+  "wheel_smoke": "Installed into a separate target; 107 extracted features and API health passed outside project cwd.",
+  "extensions": [
+    {
+      "task": "lymph_node_involvement",
+      "cohort_prepared": true,
+      "source_verified": false,
+      "frozen_experiment_present": false,
+      "unresolved_requirements": {
+        "scan_timing": "Verify that the extracted radiomic CT matches the clinical scan and that the positive CT-to-surgery interval means CT preceded surgery."
+      },
+      "state": "verification_required"
+    },
+    {
+      "task": "recurrence_competing_risk",
+      "cohort_prepared": true,
+      "source_verified": false,
+      "frozen_experiment_present": false,
+      "unresolved_requirements": {
+        "surgery_date": "The positive CT-to-surgery interval and matching radiomic CT are not independently verified.",
+        "recurrence_free_followup": "The source has a binary recurrence field and a last-known-alive date, but does not establish that recurrence was assessed through that date."
+      },
+      "state": "verification_required"
+    }
+  ],
+  "overall_project_complete": false,
+  "browser_checks": {
+    "live_inference": "5 preserved public-cohort patients; actual case completion, quality and explanation displayed",
+    "ct_example": "Explicit synthetic geometry phantom; no cancer predictions",
+    "mask_perturbation_mm": [
+      0,
+      -1,
+      1
+    ],
+    "phantom_volumes_mm3": [
+      1686.906,
+      1240.758,
+      2194.29
+    ],
+    "layouts_observed": "Desktop during initial verification; mobile after final layout change",
+    "preview": "tmp/ct-workbench-preview.jpg"
+  }
+}

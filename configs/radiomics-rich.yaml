@@ -1,0 +1,24 @@
+# Standardized new-cohort experiment settings, not recovered paper settings.
+# Requires 3D CT in HU and verified tumour masks. Fit selection on training only.
+imageType:
+  Original: {}
+  Wavelet: {}
+  LoG:
+    sigma: [1.0, 2.0, 3.0]
+featureClass:
+  shape: []
+  firstorder: []
+  glcm: []
+  glrlm: []
+  glszm: []
+  gldm: []
+  ngtdm: []
+setting:
+  binWidth: 25
+  resampledPixelSpacing: [1.0, 1.0, 1.0]
+  interpolator: sitkBSpline
+  normalize: false
+  correctMask: false
+  minimumROIDimensions: 3
+  minimumROISize: 8
+  label: 1

@@ -1,0 +1,47 @@
+{
+  "collection": "TCGA-LUAD and TCGA-LUSC tumour CT crops",
+  "source_doi": "https://doi.org/10.6084/m9.figshare.26037169",
+  "publication": "https://doi.org/10.1016/j.crmeth.2024.100817",
+  "license": "CC BY 4.0",
+  "attribution": "Verma et al., 2024, Angione Lab; original TCIA/TCGA contributors",
+  "patients": 61,
+  "class_counts": {
+    "squamous_cell_carcinoma": 33,
+    "adenocarcinoma": 28
+  },
+  "supplied_arrays": 62,
+  "duplicate_arrays_excluded": [
+    {
+      "excluded": "TCGA-LUSC-array-022",
+      "identical_to": "TCGA-LUSC-array-018"
+    }
+  ],
+  "texture_features": 93,
+  "deep_features": 1024,
+  "original_patient_ids_available": false,
+  "patient_unit": "one 224x224x5 patient stack as supplied by the publisher",
+  "label_source": "homogeneous TCGA-LUAD and TCGA-LUSC collection membership, not guessed row order",
+  "output_sha256": "c13ba1c69401875309e7e2b2fac9c6ac9fd8ef316adcda6a05eb9ecfc26cb47b",
+  "files": {
+    "TCGA-LUAD_CT_images.pkl": {
+      "md5": "7051d5adc4f325abc990238b8c6a8a3e",
+      "url": "https://ndownloader.figshare.com/files/47043934"
+    },
+    "TCGA-LUSC_CT_images.pkl": {
+      "md5": "74446785e9167e3c50008198c1aeed6d",
+      "url": "https://ndownloader.figshare.com/files/47043937"
+    }
+  },
+  "resnet18_weights_url": "https://download.pytorch.org/models/resnet18-f37072fd.pth",
+  "resnet18_sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+  "limitations": [
+    "A new, small crop classification benchmark; not a reproduction of the paper's 3D HU radiomics.",
+    "Collection membership determines class, so acquisition/source confounding must be investigated.",
+    "One published array per patient; clinical ID order cannot be independently verified.",
+    "Resized 5-slice crops lack physical spacing and HU; shape features are excluded.",
+    "Textures measure bounding-box crop interiors, not segmented tumour masks.",
+    "CNN is frozen ImageNet ResNet18, not pretrained on lung cancer or fine-tuned using test patients.",
+    "R01 crop arrays were excluded: source generation uses unordered set-derived patient order, with no saved mapping.",
+    "Neither benign controls nor a full-scan tumour detection task is included."
+  ]
+}

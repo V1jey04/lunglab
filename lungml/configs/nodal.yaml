@@ -1,0 +1,14 @@
+schema_version: 1
+task: lymph_node_involvement
+endpoint: pathological N0 versus N1/N2/N3
+prediction_context: preoperative research estimate; requires verified scan timing
+ct_surgery_window_days: [1, 90]
+seed: 42
+outer_folds: 3
+inner_folds: 3
+minimum_development_patients_per_class: 9
+C_grid: [0.01, 0.1, 1.0]
+feature_count_grid: [5, 10]
+selection_metric: nested development Brier score
+threshold_metric: inner out-of-fold balanced accuracy
+test_evaluation: once after freezing; exploratory on previously inspected patients

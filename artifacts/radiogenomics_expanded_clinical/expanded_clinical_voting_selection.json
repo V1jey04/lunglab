@@ -1,0 +1,111 @@
+{
+  "nested_cv_accuracy": 0.8372093023255814,
+  "nested_cv_balanced_accuracy": 0.5,
+  "nested_cv_auc": 0.6716269841269841,
+  "nested_cv_metrics": {
+    "accuracy": 0.8372093023255814,
+    "balanced_accuracy": 0.5,
+    "sensitivity": 0.0,
+    "specificity": 1.0,
+    "precision": 0.0,
+    "f1": 0.0,
+    "roc_auc": 0.6716269841269841,
+    "average_precision": 0.23402000616279703,
+    "brier_score": 0.13397223296942812,
+    "confusion_matrix": [
+      [
+        144,
+        0
+      ],
+      [
+        28,
+        0
+      ]
+    ]
+  },
+  "fold_selections": [
+    {
+      "parameters": {
+        "model__weights": [
+          2,
+          1
+        ]
+      },
+      "threshold": 0.5,
+      "prediction_rule": "probability_threshold",
+      "inner_accuracy": 0.8394160583941606,
+      "inner_balanced_accuracy": 0.5,
+      "inner_auc": 0.6857707509881423
+    },
+    {
+      "parameters": {
+        "model__weights": [
+          2,
+          1
+        ]
+      },
+      "threshold": 0.5,
+      "prediction_rule": "probability_threshold",
+      "inner_accuracy": 0.8394160583941606,
+      "inner_balanced_accuracy": 0.5,
+      "inner_auc": 0.7462450592885376
+    },
+    {
+      "parameters": {
+        "model__weights": [
+          1,
+          1
+        ]
+      },
+      "threshold": 0.55,
+      "prediction_rule": "probability_threshold",
+      "inner_accuracy": 0.8333333333333334,
+      "inner_balanced_accuracy": 0.5,
+      "inner_auc": 0.5706994328922496
+    },
+    {
+      "parameters": {
+        "model__weights": [
+          2,
+          1
+        ]
+      },
+      "threshold": 0.5,
+      "prediction_rule": "probability_threshold",
+      "inner_accuracy": 0.8333333333333334,
+      "inner_balanced_accuracy": 0.5,
+      "inner_auc": 0.5879017013232514
+    },
+    {
+      "parameters": {
+        "model__weights": [
+          2,
+          1
+        ]
+      },
+      "threshold": 0.65,
+      "prediction_rule": "probability_threshold",
+      "inner_accuracy": 0.8405797101449275,
+      "inner_balanced_accuracy": 0.5,
+      "inner_auc": 0.7407915360501568
+    }
+  ],
+  "input_view": "clinical",
+  "input_features": 6,
+  "feature_names": [
+    "clinical_age_at_diagnosis",
+    "clinical_male",
+    "clinical_pack_years",
+    "clinical_smoking_never",
+    "clinical_smoking_former",
+    "clinical_smoking_current"
+  ],
+  "frozen_parameters": {
+    "model__weights": [
+      2,
+      1
+    ]
+  },
+  "threshold": 0.5,
+  "prediction_rule": "probability_threshold"
+}

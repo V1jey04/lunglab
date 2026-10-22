@@ -1,0 +1,22 @@
+{
+  "verified_at_utc": "2026-10-12T06:53:55.637510+00:00",
+  "task": "recorded_recurrence",
+  "automated_tests": {
+    "passed": 107,
+    "failed": 0,
+    "duration_seconds": 14.51,
+    "scope": "Full project suite, including 4 new recorded-recurrence boundary tests."
+  },
+  "dashboard_checks": {
+    "example_patient_prediction": true,
+    "manual_postoperative_prediction": true,
+    "ct_candidate_five_case_batch": true,
+    "changed_input_clears_previous_prediction": true
+  },
+  "frozen_model_hashes": {
+    "clinical_logistic": "de907c675c0c7b623d572af2c1a6748fc7c8c1276e2b53c5fd9d879643ce0e34",
+    "clinical_radiomics_logistic": "7ffc8d7aa75e234e714d1fc0ed8178f91d3178d2ba377a79b63807fac24cbe77"
+  },
+  "existing_timed_recurrence_gate": false,
+  "context": "Software checks only. Measured exploratory clinical-model test scores are in report.json. No fixed-horizon recurrence claim."
+}
